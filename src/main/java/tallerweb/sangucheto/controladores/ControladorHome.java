@@ -66,4 +66,17 @@ public class ControladorHome {
 	public String agregarMas() {
 		return "redirect:/";
 	}
+	
+	@RequestMapping(path="/compra")
+	public String compra() {
+		Sanguchetto.getInstance().vaciar();
+		return "redirect:/";
+	}
+	
+	@RequestMapping(path="/stock", method=RequestMethod.GET)
+	public ModelAndView stock() {
+		ModelMap model = new ModelMap();
+		model.put("stockActual", Stock.getInstance().obtenerStock());
+		return new ModelAndView("stock",model);
+	}
 }

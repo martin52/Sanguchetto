@@ -29,13 +29,13 @@
 			<br>
 			<br>
 			<div>
-				<form:form action="confirmarSanguche" method="POST">	
-					<button>Confirmar</button>
+				<form:form action="confirmarSanguche">	
+					<button type="submit" value="submit">Confirmar</button>
 				</form:form>
 			</div>
 			<div>
-				<form:form action="cancelarSanguche" method="POST">	
-					<button>Cancelar</button>
+				<form:form action="cancelarSanguche">	
+					<button type="submit">Cancelar</button>
 				</form:form>
 			</div>
 	</body>
