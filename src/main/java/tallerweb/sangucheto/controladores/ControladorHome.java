@@ -28,8 +28,10 @@ public class ControladorHome {
 		mostaza.setTipo(TipoIngrediente.CONDIMENTO);
 		Stock.getInstance().obtenerStock().clear();
 		Stock.getInstance().agregarIngrediente(mayonesa);
+		Stock.getInstance().agregarStock(mayonesa, 25);
 		Stock.getInstance().agregarIngrediente(mostaza);
-		model.put("IngredientesSangucheto",Sanguchetto.getInstance().verIngredientes());
+		Stock.getInstance().comprarIngrediente(mostaza, 33);
+		model.put("IngredientesSangucheto",Sanguchetto.getInstance().verIngredientesYCondimentos());
 		model.put("IngredientesEnStock", Stock.getInstance().listarIngredientesDisponibles());
 		model.put("ingrediente", new Ingrediente());
 		model.put("precioSanguche", Sanguchetto.getInstance().getPrecio());
@@ -38,8 +40,30 @@ public class ControladorHome {
 	
 	@RequestMapping(path="/agregar", method=RequestMethod.POST)
 	public String agregarAlSangucheto(@ModelAttribute("ingrediente")Ingrediente ingrediente) {
-		System.out.println(ingrediente);
 		Sanguchetto.getInstance().agregarIngrediente(ingrediente);
+		Stock.getInstance().comprarIngrediente(ingrediente, 1);
+		return "redirect:/";
+	}
+	
+	@RequestMapping(path="/cancelarSanguche", method=RequestMethod.POST)
+	public String cancelarSanguche() {
+		for (Ingrediente ingredienteSanguche : Sanguchetto.getInstance().verIngredientesYCondimentos()) {
+			Stock.getInstance().agregarStock(ingredienteSanguche, 1);
+		}
+		Sanguchetto.getInstance().vaciar();
+		return "redirect:/";
+	}
+	
+	@RequestMapping(path="/confirmarSanguche", method=RequestMethod.POST)
+	public ModelAndView confirmarSanguche() {
+		ModelMap model = new ModelMap();
+		model.put("sanguche", Sanguchetto.getInstance().verIngredientesYCondimentos());
+		model.put("precio", Sanguchetto.getInstance().getPrecio());
+		return new ModelAndView("confirmar",model);
+	}
+	
+	@RequestMapping(path="/agregarMas", method=RequestMethod.POST)
+	public String agregarMas() {
 		return "redirect:/";
 	}
 }

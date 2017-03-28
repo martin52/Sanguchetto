@@ -35,7 +35,12 @@ public class Sanguchetto {
 	 */
 	public List<Ingrediente> verIngredientes(){
 		// Implementar
-		return ingredientes;
+		List<Ingrediente> soloIngredientes = new LinkedList<Ingrediente>();
+        for (Ingrediente ingrediente : ingredientes) {
+        	if(ingrediente.getTipo().toString().toLowerCase() == "ingrediente")
+				soloIngredientes.add(ingrediente);
+		}
+    	return soloIngredientes;
 	}
 	
 	/**
@@ -63,5 +68,12 @@ public class Sanguchetto {
 			precio+=ingrediente.getPrecio();
 		}
 		return precio;
+	}
+	/////Agregados///
+	/**
+	 * Devuelve todos los condimentos e ingredientes que forman parte del Sanguchetto
+	 */
+	public List<Ingrediente> verIngredientesYCondimentos(){
+		return ingredientes;
 	}
 }

@@ -119,4 +119,5 @@ public class Stock {
 		this.stock.remove(ingrediente);
 		return true;
 	}
+	
 }

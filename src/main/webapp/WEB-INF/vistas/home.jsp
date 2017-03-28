@@ -26,5 +26,17 @@
 				</c:forEach>
 			</div>
 			<label>Precio: ${precioSanguche}</label>
+			<br>
+			<br>
+			<div>
+				<form:form action="confirmarSanguche" method="POST">	
+					<button>Confirmar</button>
+				</form:form>
+			</div>
+			<div>
+				<form:form action="cancelarSanguche" method="POST">	
+					<button>Cancelar</button>
+				</form:form>
+			</div>
 	</body>
 </html>
