@@ -1,5 +1,6 @@
 package tallerweb.sangucheto.modelo;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,6 +8,8 @@ public class Sanguchetto {
 
 	private static Sanguchetto instance = new Sanguchetto();
 	private List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+	
+	private HashMap<String,Integer> ingredienteYCantidad = new HashMap<String,Integer>(); 
 	
 	private Sanguchetto(){}
 	
@@ -27,6 +30,13 @@ public class Sanguchetto {
 	 */
 	public void agregarIngrediente(Ingrediente ingrediente){
 		ingredientes.add(ingrediente);
+		if(ingredienteYCantidad.containsKey(ingrediente.getNombre())) {
+			Integer nuevaCantidad = ingredienteYCantidad.get(ingrediente.getNombre())+1;
+			ingredienteYCantidad.put(ingrediente.getNombre(), nuevaCantidad);
+		}
+		else {
+			ingredienteYCantidad.put(ingrediente.getNombre(),1);
+		}
 	}
 	
 	/**
@@ -65,7 +75,7 @@ public class Sanguchetto {
 		// Implementar
 		Double precio = 0.0;
 		for (Ingrediente ingrediente : ingredientes) {
-			precio+=ingrediente.getPrecio();
+			precio += ingrediente.getPrecio()*ingredienteYCantidad.get(ingrediente);
 		}
 		return precio;
 	}
@@ -76,4 +86,9 @@ public class Sanguchetto {
 	public List<Ingrediente> verIngredientesYCondimentos(){
 		return ingredientes;
 	}
+	
+	public HashMap<String,Integer> verIngredientesYCantidad(){
+		return ingredienteYCantidad;
+	}
+
 }

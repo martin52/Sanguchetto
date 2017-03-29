@@ -9,9 +9,10 @@
 </head>
 <body>
 	<div>
+		
 		<label>Stock Actual</label><br>
-		<c:forEach items="stockActual" var="ingrediente">
-				<label>${ingrediente.key}     </label><label>Cantidad:  ${ingrediente.value}</label>
+		<c:forEach items= "${stockActual.keySet()}" var="ingrediente">
+				Ingrediente: ${ingrediente}    Cantidad: ${stockActual.get(ingrediente)}<br>
 		</c:forEach>
 	</div>
 	<div>

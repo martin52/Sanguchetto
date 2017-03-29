@@ -1,5 +1,8 @@
 package tallerweb.sangucheto.controladores;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,6 +34,12 @@ public class ControladorHome {
 		Stock.getInstance().agregarStock(mayonesa, 25);
 		Stock.getInstance().agregarIngrediente(mostaza);
 		Stock.getInstance().comprarIngrediente(mostaza, 33);
+		
+for (Ingrediente var : Sanguchetto.getInstance().verIngredientesYCondimentos()) {
+	
+	System.out.println(var.getNombre() + "  Cantidad: "+ Sanguchetto.getInstance().verIngredientesYCantidad().get(var.getNombre()));
+}
+System.out.println("lalalallala");	
 		model.put("IngredientesSangucheto",Sanguchetto.getInstance().verIngredientesYCondimentos());
 		model.put("IngredientesEnStock", Stock.getInstance().listarIngredientesDisponibles());
 		model.put("ingrediente", new Ingrediente());
@@ -40,15 +49,18 @@ public class ControladorHome {
 	
 	@RequestMapping(path="/agregar", method=RequestMethod.POST)
 	public String agregarAlSangucheto(@ModelAttribute("ingrediente")Ingrediente ingrediente) {
-		Sanguchetto.getInstance().agregarIngrediente(ingrediente);
+		
 		Stock.getInstance().comprarIngrediente(ingrediente, 1);
+		Sanguchetto.getInstance().agregarIngrediente(ingrediente);
 		return "redirect:/";
 	}
 	
 	@RequestMapping(path="/cancelarSanguche", method=RequestMethod.POST)
 	public String cancelarSanguche() {
-		for (Ingrediente ingredienteSanguche : Sanguchetto.getInstance().verIngredientesYCondimentos()) {
-			Stock.getInstance().agregarStock(ingredienteSanguche, 1);
+		List<Ingrediente> ingredientesSangucheto = new LinkedList<Ingrediente>();
+		ingredientesSangucheto = Sanguchetto.getInstance().verIngredientesYCondimentos();
+		for (String ingrediente : ingredientesSangucheto.keySet()) {
+			Stock.getInstance().agregarStock(Stock.getInstance().obten, ingredientesSangucheto.get(ingrediente));
 		}
 		Sanguchetto.getInstance().vaciar();
 		return "redirect:/";
@@ -78,5 +90,11 @@ public class ControladorHome {
 		ModelMap model = new ModelMap();
 		model.put("stockActual", Stock.getInstance().obtenerStock());
 		return new ModelAndView("stock",model);
+	}
+	
+	@RequestMapping(path="/agregarStock")
+	public String agregarStock() {
+		
+		return "redirect:/stock";
 	}
 }

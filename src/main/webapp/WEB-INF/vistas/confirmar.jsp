@@ -15,10 +15,10 @@
 	</form:form>
 	<label>Total: </label><label>${precio}</label>
 	<form:form action="compra">
-		<form:button type = "submit"> Confirmar(falta terminar)</form:button>
+		<button type = "submit"> Confirmar</button>
 	</form:form>
 	<form:form action="agregarMas">
-		<form:button type = "submit"> Agregar Más</form:button>
+		<button type = "submit"> Agregar Más</button>
 	</form:form>
 </body>
 </html>
