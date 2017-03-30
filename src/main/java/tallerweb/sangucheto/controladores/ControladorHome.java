@@ -33,9 +33,9 @@ public class ControladorHome {
 		Stock.getInstance().agregarIngrediente(mayonesa);
 		Stock.getInstance().agregarStock(mayonesa, 25);
 		Stock.getInstance().agregarIngrediente(mostaza);
-		Stock.getInstance().comprarIngrediente(mostaza, 33);
+		Stock.getInstance().agregarStock(mostaza, 2);
 		model.put("IngredientesSangucheto",Sanguchetto.getInstance().verIngredientesYCantidad());
-		model.put("IngredientesEnStock", Stock.getInstance().listarIngredientesDisponibles());
+		model.put("IngredientesEnStock", Stock.getInstance().obtenerStock());
 		model.put("ingrediente", new Ingrediente());
 		model.put("precioSanguche", Sanguchetto.getInstance().getPrecio());
 		return new ModelAndView("home",model);

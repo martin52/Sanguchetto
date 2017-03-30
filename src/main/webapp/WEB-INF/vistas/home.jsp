@@ -25,16 +25,19 @@
   			<div class="col-xs-5col-md-5">
 			<div>
 			<br>
-						<c:forEach items="${IngredientesEnStock}" var="ingredientesStock">
-					    ${ingredientesStock} 
-					    <form:form action="agregar" modelAttribute="ingrediente" role="form">
-						 <form:input id ="nombre" path="nombre" type="hidden" value="${ingredientesStock.nombre}" />
-						 <form:input id="apellido" path="precio" type="hidden" value="${ingredientesStock.precio}" />
-						 </span></a><br>
-						 <form:input id="tipo" path="tipo" type="hidden" value="${ingredientesStock.tipo}" /> 
-						 <button type="Submit" class="btn btnSmall btn-success"> <span class="glyphicon glyphicon-plus"></span></button>		
-						 	
-						</form:form>
+						<c:forEach items="${IngredientesEnStock.keySet()}" var="ingredientesStock">
+					    	<c:if test="${IngredientesEnStock.get(ingredientesStock) gt 0}">
+					    		${ingredientesStock.nombre}  ${ingredientesStock.precio}
+					    	
+					    	
+					   			 <form:form action="agregar" modelAttribute="ingrediente" role="form">
+									 <form:input id ="nombre" path="nombre" type="hidden" value="${ingredientesStock.nombre}" />
+							 		 <form:input id="apellido" path="precio" type="hidden" value="${ingredientesStock.precio}" />
+									 </span></a><br>
+							 		 <form:input id="tipo" path="tipo" type="hidden" value="${ingredientesStock.tipo}" /> 
+									 <button type="Submit" class="btn btnSmall btn-success"> <span class="glyphicon glyphicon-plus"></span></button>		
+							 	 </form:form>
+							 </c:if> 
 					</c:forEach>	
 			</div>
 
