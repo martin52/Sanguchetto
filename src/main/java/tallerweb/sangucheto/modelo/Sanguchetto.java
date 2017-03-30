@@ -22,6 +22,7 @@ public class Sanguchetto {
 	 */
 	public void vaciar(){
 		ingredientes.clear();
+		ingredienteYCantidad.clear();
 	}
 	
 	/**
