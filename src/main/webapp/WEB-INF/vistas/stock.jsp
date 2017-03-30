@@ -12,11 +12,11 @@
 		
 		<label>Stock Actual</label><br>
 		<c:forEach items= "${stockActual.keySet()}" var="ingrediente">
-				Ingrediente: ${ingrediente}    Cantidad: ${stockActual.get(ingrediente)}<br>
+				Ingrediente: ${ingrediente.nombre}  Precio: ${ingrediente.precio}  Cantidad: ${stockActual.get(ingrediente)}<br>
 		</c:forEach>
 	</div>
 	<div>
-		<form:form action="agregarStock">
+		<form:form action="agregarStock" modelAttribute="ingredienteVacio">
 <%-- 			<form:select path="ingredienteVacio"> --%>
 <%-- 				<form:option value="-" label="--Seleccione un ingrediente"/> --%>
 <%--                 <form:options items="${stockActual.keySet()}"/> --%>
