@@ -15,55 +15,38 @@
 
 	<div class="container">
 			<div class="container">
-			<div class="row">
-    		<div class="col-sm-6" style="background-color:#8C9EFF;">
-			<h1>Sanguchetto</h1>
-			</div>
-			</div>
-			<a>
-			<div class="row">
-    		<div class="col-xs-3 col-md-6" style="background-color:#E3F2FD;">
-			<div>
-<<<<<<< HEAD
-				<br>
-					 <c:forEach items="${IngredientesEnStock}" var="ingredientesStock">
-					 <h2>
-					 <span class="label label-default"> ${ingredientesStock}</span>
-		 		 	    <form:form action="agregar" modelAttribute="ingrediente" role="form">
-							<form:input id ="nombre" path="nombre" type="hidden" value="${ingredientesStock.nombre}" />
-	        	 	    	<form:input id="apellido" path="precio" type="hidden" value="${ingredientesStock.precio}" />
-				</a>	
-	      				<form:input id="tipo" path="tipo" type="hidden" value="${ingredientesStock.tipo}" /> 	
-	      				<button type="Submit" class="btn btnSmall btn-success"> <span class="glyphicon glyphicon-plus"></span></button></h2>
-						</form:form>
-							
-						</c:forEach>
-			
-			
-				</br>		
-=======
-			<br>
-						<c:forEach items="${IngredientesEnStock.keySet()}" var="ingredientesStock">
-					    	<c:if test="${IngredientesEnStock.get(ingredientesStock) gt 0}">
-					    		${ingredientesStock.nombre}  ${ingredientesStock.precio}
-					    	
-					    	
-					   			 <form:form action="agregar" modelAttribute="ingrediente" role="form">
-									 <form:input id ="nombre" path="nombre" type="hidden" value="${ingredientesStock.nombre}" />
-							 		 <form:input id="apellido" path="precio" type="hidden" value="${ingredientesStock.precio}" />
-									 </span></a><br>
-							 		 <form:input id="tipo" path="tipo" type="hidden" value="${ingredientesStock.tipo}" /> 
-									 <button type="Submit" class="btn btnSmall btn-success"> <span class="glyphicon glyphicon-plus"></span></button>		
-							 	 </form:form>
-							 </c:if> 
-					</c:forEach>	
-			</div>
+    			<div class="col-sm-8" style="background-color:#8C9EFF;">
+					<h1>Sanguchetto</h1>
+				</div>
+			<div class="col-sm-8" style="background-color:#E3F2FD;">
 
-			</br>		
+				<div>
+				<br>
+
+
+
+<span style="display:inline-block">
+
+
+					<c:forEach items="${IngredientesEnStock.keySet()}" var="ingredientesStock">
+					<c:if test="${IngredientesEnStock.get(ingredientesStock) gt 0}">
+					<form:form action="agregar"  width="30" height="20" modelAttribute="ingrediente" role="form">
+						${ingredientesStock.nombre} 
+				     	 ${ingredientesStock.precio}
+						<form:input class="button" id ="nombre" path="nombre" type="hidden" value="${ingredientesStock.nombre}" />
+						<form:input id="apellido" path="precio" type="hidden" value="${ingredientesStock.precio}" />
+						<form:input id="tipo" path="tipo" type="hidden" value="${ingredientesStock.tipo}" /> 
+						<button type="Submit"  class="btn btnSmall btn-success"> <span class="glyphicon glyphicon-plus"></span></button>	
+</span>						
+					</form:form>
+					</c:if> 
+					</c:forEach>
+				</div>
+
+
 			<br>
->>>>>>> origin/master
 			<div>
-				<c:forEach items="${IngredientesSangucheto.keySet()}" var="ingrediente">
+				<c:forEach items="${IngredientesSangucheto.keySet()}" var="ingrediente"><br>
 					<label>${ingrediente}</label> Cantidad: ${IngredientesSangucheto.get(ingrediente)}
 				</c:forEach>
 			</div>
@@ -86,8 +69,10 @@
 			</div>
 			</div>
 			</div>
-	</div>	
-	</div>	
-	
+			</div>
+</div>
+</div>
+
+	</div>
 	</body>
 </html>
