@@ -21,8 +21,8 @@
 			</div>
 			<br>
 			<div>
-				<c:forEach items="${IngredientesSangucheto}" var="ingredientesSangucheto">
-					<label>${ingredientesSangucheto}</label><br>
+				<c:forEach items="${IngredientesSangucheto.keySet()}" var="ingrediente">
+					<label>${ingrediente}</label> Cantidad: ${IngredientesSangucheto.get(ingrediente)}<br>
 				</c:forEach>
 			</div>
 			<label>Precio: ${precioSanguche}</label>
