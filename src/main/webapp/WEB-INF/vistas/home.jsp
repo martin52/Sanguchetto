@@ -7,34 +7,43 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta charset="utf-8">
 	    <link rel="stylesheet" href="css/bootstrap.min.css">
+	    
 		<title>Home</title>
 	</head>
+	
 	<body>
+
 	
 			<h1>Sanguchetto</h1>
 			
 			<div>
-			
-				<c:forEach items="${IngredientesEnStock}" var="ingredientesStock">
-					 ${ingredientesStock} 
-					 <form:form action="agregar" modelAttribute="ingrediente" role="form">
+			<br>		<c:forEach items="${IngredientesEnStock}" var="ingredientesStock">
+					    ${ingredientesStock} 
+					    <form:form action="agregar" modelAttribute="ingrediente" role="form">
 						 <form:input id ="nombre" path="nombre" type="hidden" value="${ingredientesStock.nombre}" />
 						 <form:input id="apellido" path="precio" type="hidden" value="${ingredientesStock.precio}" />
-						 <form:input id="tipo" path="tipo" type="hidden" value="${ingredientesStock.tipo}" />
-						 <button type="Submit" class="btn btn-default">Agregar</button>
-					</form:form>
-				</c:forEach>	
+						 </span></a><br>
+						 <form:input id="tipo" path="tipo" type="hidden" value="${ingredientesStock.tipo}" /> 
+						 <button type="Submit" class="btn btnSmall btn-success"> <span class="glyphicon glyphicon-plus"></span></button>		
+						 	
+						</form:form>
+					</c:forEach>	
 			</div>
+			
+			</br>		
 			<br>
 			<div>
 				<c:forEach items="${IngredientesSangucheto.keySet()}" var="ingrediente">
 					<label>${ingrediente}</label> Cantidad: ${IngredientesSangucheto.get(ingrediente)}<br>
 				</c:forEach>
 			</div>
-			<label>Precio: ${precioSanguche}</label>
+			<span class="label label-default">
+			<label>Precio: ${precioSanguche}</label></span>
 			<br>
 			<br>
 			<div>
+			<div class="row">
+  					<div class="col-xs-1 col-md-0">
 				<form:form action="confirmarSanguche">	
 						 <button type="Submit" class="btn btn-primary">Agregar</button>
 				</form:form>
@@ -43,6 +52,8 @@
 				<form:form action="cancelarSanguche">	
 						 <button type="Submit" class="btn btn-danger">Cancelar</button>
 				</form:form>
+			</div>	
 			</div>
+
 	</body>
 </html>
