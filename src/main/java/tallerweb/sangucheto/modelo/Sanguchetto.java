@@ -9,7 +9,7 @@ public class Sanguchetto {
 	private static Sanguchetto instance = new Sanguchetto();
 	private List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
 	
-	private HashMap<String,Integer> ingredienteYCantidad = new HashMap<String,Integer>(); 
+	private HashMap<Ingrediente,Integer> ingredienteYCantidad = new HashMap<Ingrediente,Integer>(); 
 	
 	private Sanguchetto(){}
 	
@@ -30,12 +30,12 @@ public class Sanguchetto {
 	 */
 	public void agregarIngrediente(Ingrediente ingrediente){
 		ingredientes.add(ingrediente);
-		if(ingredienteYCantidad.containsKey(ingrediente.getNombre())) {
-			Integer nuevaCantidad = ingredienteYCantidad.get(ingrediente.getNombre())+1;
-			ingredienteYCantidad.put(ingrediente.getNombre(), nuevaCantidad);
+		if(ingredienteYCantidad.containsKey(ingrediente)) {
+			Integer nuevaCantidad = ingredienteYCantidad.get(ingrediente)+1;
+			ingredienteYCantidad.put(ingrediente, nuevaCantidad);
 		}
 		else {
-			ingredienteYCantidad.put(ingrediente.getNombre(),1);
+			ingredienteYCantidad.put(ingrediente,1);
 		}
 	}
 	
@@ -87,7 +87,7 @@ public class Sanguchetto {
 		return ingredientes;
 	}
 	
-	public HashMap<String,Integer> verIngredientesYCantidad(){
+	public HashMap<Ingrediente,Integer> verIngredientesYCantidad(){
 		return ingredienteYCantidad;
 	}
 

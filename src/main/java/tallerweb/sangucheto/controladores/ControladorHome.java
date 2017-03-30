@@ -1,8 +1,5 @@
 package tallerweb.sangucheto.controladores;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,13 +31,7 @@ public class ControladorHome {
 		Stock.getInstance().agregarStock(mayonesa, 25);
 		Stock.getInstance().agregarIngrediente(mostaza);
 		Stock.getInstance().comprarIngrediente(mostaza, 33);
-		
-for (Ingrediente var : Sanguchetto.getInstance().verIngredientesYCondimentos()) {
-	
-	System.out.println(var.getNombre() + "  Cantidad: "+ Sanguchetto.getInstance().verIngredientesYCantidad().get(var.getNombre()));
-}
-System.out.println("lalalallala");	
-		model.put("IngredientesSangucheto",Sanguchetto.getInstance().verIngredientesYCondimentos());
+		model.put("IngredientesSangucheto",Sanguchetto.getInstance().verIngredientesYCantidad());
 		model.put("IngredientesEnStock", Stock.getInstance().listarIngredientesDisponibles());
 		model.put("ingrediente", new Ingrediente());
 		model.put("precioSanguche", Sanguchetto.getInstance().getPrecio());
@@ -49,18 +40,15 @@ System.out.println("lalalallala");
 	
 	@RequestMapping(path="/agregar", method=RequestMethod.POST)
 	public String agregarAlSangucheto(@ModelAttribute("ingrediente")Ingrediente ingrediente) {
-		
-		Stock.getInstance().comprarIngrediente(ingrediente, 1);
 		Sanguchetto.getInstance().agregarIngrediente(ingrediente);
+		Stock.getInstance().comprarIngrediente(ingrediente, 1);
 		return "redirect:/";
 	}
 	
 	@RequestMapping(path="/cancelarSanguche", method=RequestMethod.POST)
 	public String cancelarSanguche() {
-		List<Ingrediente> ingredientesSangucheto = new LinkedList<Ingrediente>();
-		ingredientesSangucheto = Sanguchetto.getInstance().verIngredientesYCondimentos();
-		for (String ingrediente : ingredientesSangucheto.keySet()) {
-			Stock.getInstance().agregarStock(Stock.getInstance().obten, ingredientesSangucheto.get(ingrediente));
+		for (Ingrediente ingredienteSanguche : Sanguchetto.getInstance().verIngredientesYCondimentos()) {
+			Stock.getInstance().agregarStock(ingredienteSanguche, 1);
 		}
 		Sanguchetto.getInstance().vaciar();
 		return "redirect:/";
@@ -90,11 +78,5 @@ System.out.println("lalalallala");
 		ModelMap model = new ModelMap();
 		model.put("stockActual", Stock.getInstance().obtenerStock());
 		return new ModelAndView("stock",model);
-	}
-	
-	@RequestMapping(path="/agregarStock")
-	public String agregarStock() {
-		
-		return "redirect:/stock";
 	}
 }
