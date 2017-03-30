@@ -9,8 +9,8 @@
 </head>
 <body>
 	<form:form>
-		<c:forEach items="${sanguche}" var="ingredientes">
-			<label>${ingredientes}</label><br>
+		<c:forEach items="${sanguche.keySet()}" var="ingredientes">
+			<label>${ingredientes.nombre}</label>       <label>${ingredientes.precio}</label>       <label>${sanguche.get(ingredientes)}</label><br>
 		</c:forEach>
 	</form:form>
 	<label>Total: </label><label>${precio}</label>

@@ -21,19 +21,6 @@ public class ControladorHome {
 	@RequestMapping(path="/")
 	public ModelAndView irAHome(){
 		ModelMap model = new ModelMap();
-		Ingrediente mayonesa = new Ingrediente();
-		Ingrediente mostaza = new Ingrediente();
-		mayonesa.setNombre("Mayonesa");
-		mayonesa.setPrecio(15.22);
-		mayonesa.setTipo(TipoIngrediente.INGREDIENTE);
-		mostaza.setNombre("Mostaza");
-		mostaza.setPrecio(20.75);
-		mostaza.setTipo(TipoIngrediente.CONDIMENTO);
-		Stock.getInstance().obtenerStock().clear();
-		Stock.getInstance().agregarIngrediente(mayonesa);
-		Stock.getInstance().agregarStock(mayonesa, 25);
-		Stock.getInstance().agregarIngrediente(mostaza);
-		Stock.getInstance().agregarStock(mostaza, 2);
 		model.put("IngredientesSangucheto",Sanguchetto.getInstance().verIngredientesYCantidad());
 		model.put("IngredientesEnStock", Stock.getInstance().obtenerStock());
 		model.put("ingrediente", new Ingrediente());
@@ -60,7 +47,7 @@ public class ControladorHome {
 	@RequestMapping(path="/confirmarSanguche", method=RequestMethod.POST)
 	public ModelAndView confirmarSanguche() {
 		ModelMap model = new ModelMap();
-		model.put("sanguche", Sanguchetto.getInstance().verIngredientesYCondimentos());
+		model.put("sanguche", Sanguchetto.getInstance().verIngredientesYCantidad());
 		model.put("precio", Sanguchetto.getInstance().getPrecio());
 		return new ModelAndView("confirmar",model);
 	}
@@ -79,6 +66,19 @@ public class ControladorHome {
 	@RequestMapping(path="/stock")
 	public ModelAndView stock() {
 		ModelMap model = new ModelMap();
+		Ingrediente mayonesa = new Ingrediente();
+		Ingrediente mostaza = new Ingrediente();
+		mayonesa.setNombre("Mayonesa");
+		mayonesa.setPrecio(15.22);
+		mayonesa.setTipo(TipoIngrediente.INGREDIENTE);
+		mostaza.setNombre("Mostaza");
+		mostaza.setPrecio(20.75);
+		mostaza.setTipo(TipoIngrediente.CONDIMENTO);
+		Stock.getInstance().obtenerStock().clear();
+		Stock.getInstance().agregarIngrediente(mayonesa);
+		Stock.getInstance().agregarStock(mayonesa, 25);
+		Stock.getInstance().agregarIngrediente(mostaza);
+		Stock.getInstance().agregarStock(mostaza, 2);
 		Map<Ingrediente,Integer> stock = new HashMap<Ingrediente, Integer>();
 		stock=Stock.getInstance().obtenerStock();
 		model.put("stockActual", stock);
