@@ -56,10 +56,6 @@ public class Ingrediente {
 			return false;
 		return true;
 	}
-    
-<<<<<<< HEAD
-=======
-    
->>>>>>> refs/remotes/origin/Modificaciones-sin-terminar
+
     
 }

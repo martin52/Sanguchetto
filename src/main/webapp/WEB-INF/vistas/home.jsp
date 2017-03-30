@@ -13,11 +13,19 @@
 	
 	<body>
 
-	
+	<div class="container">
+			<div class="row">
+    		<div class="col-sm-4" style="background-color:#8C9EFF;">
 			<h1>Sanguchetto</h1>
-			
+			</div>
+			</div>
+			<div class="row">
+    		<div class="col-sm-4" style="background-color:#E3F2FD;">
+			<div class="row">
+  			<div class="col-xs-5col-md-5">
 			<div>
-			<br>		<c:forEach items="${IngredientesEnStock}" var="ingredientesStock">
+			<br>
+						<c:forEach items="${IngredientesEnStock}" var="ingredientesStock">
 					    ${ingredientesStock} 
 					    <form:form action="agregar" modelAttribute="ingrediente" role="form">
 						 <form:input id ="nombre" path="nombre" type="hidden" value="${ingredientesStock.nombre}" />
@@ -29,7 +37,7 @@
 						</form:form>
 					</c:forEach>	
 			</div>
-			
+
 			</br>		
 			<br>
 			<div>
@@ -43,7 +51,7 @@
 			<br>
 			<div>
 			<div class="row">
-  					<div class="col-xs-1 col-md-0">
+  					<div class="col-xs-4 col-md-4">
 				<form:form action="confirmarSanguche">	
 						 <button type="Submit" class="btn btn-primary">Agregar</button>
 				</form:form>
@@ -54,6 +62,10 @@
 				</form:form>
 			</div>	
 			</div>
-
+			</div>
+			</div>
+	</div>	
+	</div>	
+	
 	</body>
 </html>
