@@ -1,5 +1,8 @@
 package tallerweb.sangucheto.controladores;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -73,10 +76,14 @@ public class ControladorHome {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(path="/stock", method=RequestMethod.GET)
+	@RequestMapping(path="/stock")
 	public ModelAndView stock() {
 		ModelMap model = new ModelMap();
-		model.put("stockActual", Stock.getInstance().obtenerStock());
+		Map<Ingrediente,Integer> stock = new HashMap<Ingrediente, Integer>();
+		stock=Stock.getInstance().obtenerStock();
+		model.put("stockActual", stock);
+		model.put("ingredienteVacio", new Ingrediente());
+	
 		return new ModelAndView("stock",model);
 	}
 }

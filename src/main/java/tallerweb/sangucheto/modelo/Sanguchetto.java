@@ -7,7 +7,7 @@ import java.util.List;
 public class Sanguchetto {
 
 	private static Sanguchetto instance = new Sanguchetto();
-	private List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+	private List<Ingrediente> ingredientes = new LinkedList<Ingrediente>(); //borrable
 	
 	private HashMap<Ingrediente,Integer> ingredienteYCantidad = new HashMap<Ingrediente,Integer>(); 
 	
@@ -29,7 +29,8 @@ public class Sanguchetto {
 	 * @param ingrediente
 	 */
 	public void agregarIngrediente(Ingrediente ingrediente){
-		ingredientes.add(ingrediente);
+		//if(!(ingredientes.contains(ingrediente))) // tirar exception por ingrediente existente
+			ingredientes.add(ingrediente);
 		if(ingredienteYCantidad.containsKey(ingrediente)) {
 			Integer nuevaCantidad = ingredienteYCantidad.get(ingrediente)+1;
 			ingredienteYCantidad.put(ingrediente, nuevaCantidad);
@@ -74,7 +75,7 @@ public class Sanguchetto {
 	public Double getPrecio(){
 		// Implementar
 		Double precio = 0.0;
-		for (Ingrediente ingrediente : ingredientes) {
+		for (Ingrediente ingrediente : ingredienteYCantidad.keySet()) {
 			precio += ingrediente.getPrecio()*ingredienteYCantidad.get(ingrediente);
 		}
 		return precio;

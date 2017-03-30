@@ -16,8 +16,16 @@
 		</c:forEach>
 	</div>
 	<div>
-		<button>Agregar Stock</button>
-		<button>Agregar Ingrediente</button>
+		<form:form action="agregarStock" modelAtribute="ingredienteVacio">
+			<form:select path="ingredienteVacio">
+				<form:option value="-" label="--Seleccione un ingrediente"/>
+                <form:options items="${stockActual.keySet()}"/>
+			</form:select>
+			<button type="Submit">Agregar Stock</button>
+		</form:form>
+		<form:form action="agregarIngredienteAStock">
+			<button type="Submit">Agregar Ingrediente</button>
+		</form:form>
 	</div>
 </body>
 </html>
