@@ -31,12 +31,16 @@
 					<c:forEach items="${IngredientesEnStock.keySet()}" var="ingredientesStock">
 					<c:if test="${IngredientesEnStock.get(ingredientesStock) gt 0}">
 					<form:form action="agregar"  width="30" height="20" modelAttribute="ingrediente" role="form">
-						${ingredientesStock.nombre} 
-				     	 ${ingredientesStock.precio}
+						<label>
+							${ingredientesStock.nombre} 
+				     		${ingredientesStock.precio}
+				    	</label>
 						<form:input class="button" id ="nombre" path="nombre" type="hidden" value="${ingredientesStock.nombre}" />
 						<form:input id="apellido" path="precio" type="hidden" value="${ingredientesStock.precio}" />
 						<form:input id="tipo" path="tipo" type="hidden" value="${ingredientesStock.tipo}" /> 
-						<button type="Submit"  class="btn btnSmall btn-success"> <span class="glyphicon glyphicon-plus"></span></button>	
+						<button type="Submit" class="btn btn-success btn-xs">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>	
 </span>						
 					</form:form>
 					</c:if> 

@@ -86,4 +86,23 @@ public class ControladorHome {
 	
 		return new ModelAndView("stock",model);
 	}
+	
+	@RequestMapping(path="/agregarStock", method=RequestMethod.POST)
+	public ModelAndView agregarStock(@ModelAttribute ("Ingrediente") Ingrediente ingrediente) {
+		ModelMap model = new ModelMap();
+		Stock miStock = Stock.getInstance();
+		
+		Ingrediente miIngrediente=null;
+		for(Ingrediente key : miStock.obtenerStock().keySet()){
+			if(key.getNombre().equals(ingrediente.getNombre())){
+				miIngrediente=key;
+			}
+		}
+		Integer cantidad=Double.valueOf(ingrediente.getPrecio()).intValue();
+		System.out.println(ingrediente.getNombre()+" " +cantidad);
+		model.put("ingrediente", miIngrediente.getNombre());
+		model.put("cantidad", cantidad);
+		miStock.agregarStock(miIngrediente, cantidad);
+		return new ModelAndView("stock", model);
+	}
 }

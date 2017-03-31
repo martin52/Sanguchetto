@@ -11,18 +11,24 @@
 	<div>
 		
 		<label>Stock Actual</label><br>
-		<c:forEach items= "${stockActual.keySet()}" var="ingrediente">
-				Ingrediente: ${ingrediente.nombre}  Precio: ${ingrediente.precio}  Cantidad: ${stockActual.get(ingrediente)}<br>
+		<c:forEach items= "${stockActual}" var="ingrediente">
+				Ingrediente: ${ingrediente.key.nombre}  
+			     Precio: ${ingrediente.key.precio}  
+				Cantidad: ${ingrediente.value}
 		</c:forEach>
 	</div>
 	<div>
-		<form:form action="agregarStock" modelAttribute="ingredienteVacio">
-<%-- 			<form:select path="ingredienteVacio"> --%>
-<%-- 				<form:option value="-" label="--Seleccione un ingrediente"/> --%>
-<%--                 <form:options items="${stockActual.keySet()}"/> --%>
-<%-- 			</form:select> --%>
-			<button type="Submit">Agregar Stock</button>
-		</form:form>
+
+<%-- 		<form:form action="agregarStock" modelAttribute="ingrediente">
+			<form:select id="nombre" path="nombre">
+				<form:option value="-" label="--Seleccione un ingrediente"/>
+                <form:options items="${stockActual}"/>
+			</form:select>
+			<form:input id="cantidad" type="text" path="precio" placeholder="ingresarCantidad"></form:input>	
+			<button type="Submit">Agregar Stock</button>	
+			
+		</form:form>					 --%>			
+
 		<form:form action="agregarIngredienteAStock">
 			<button type="Submit">Agregar Ingrediente</button>
 		</form:form>
