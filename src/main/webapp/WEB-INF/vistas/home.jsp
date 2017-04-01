@@ -16,27 +16,28 @@
 	<div class="container">
 			<div class="container">
 			<div class="row">
-    		<div class="col-sm-6" style="background-color:#8C9EFF;">
+    		<div class="col-md-12" style="background-color:#8C9EFF;">
 			<h1>Sanguchetto</h1>
 			</div>
 			</div>
-			<a>
+			<div class="col-md-6">
 			<div class="row">
-    		<div class="col-xs-3 col-md-6" style="background-color:#E3F2FD;">
+    		<div class="col-xs-3 col-md-12" style="background-color:#E3F2FD;">
 			<div>
 
 			<br>
 						<c:forEach items="${IngredientesEnStock.keySet()}" var="ingredientesStock">
 					    	<c:if test="${IngredientesEnStock.get(ingredientesStock) gt 0}">
-					    		${ingredientesStock.nombre}  ${ingredientesStock.precio}
-		
+					    		<h4>${ingredientesStock.nombre} - ${ingredientesStock.precio}</h4>
+								<div class=col-md-6>
 					   			 <form:form action="agregar" modelAttribute="ingrediente" role="form">
 									 <form:input id ="nombre" path="nombre" type="hidden" value="${ingredientesStock.nombre}" />
 							 		 <form:input id="apellido" path="precio" type="hidden" value="${ingredientesStock.precio}" />
-									 </span></a><br>
+									 </span></div><br>
 							 		 <form:input id="tipo" path="tipo" type="hidden" value="${ingredientesStock.tipo}" /> 
 									 <button type="Submit" class="btn btnSmall btn-success"> <span class="glyphicon glyphicon-plus"></span></button>		
 							 	 </form:form>
+							 	 </div>
 							 </c:if> 
 					</c:forEach>
 
