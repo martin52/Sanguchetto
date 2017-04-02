@@ -12,22 +12,32 @@
 	</head>
 	
 	<body>
-    			<div class="col-md-12" style="background-color:#8C9EFF;">
-    			<div class="container">
-					<h1>Sanguchetto</h1>
-				</div>
-				</div>
-			<div class="col-md-12" style="background-color:#E3F2FD;">
-				<div class="container"> 
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/Sangucheto/"><kbd>Sanguchetto</kbd></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-1" aria-expanded="true">
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <br>
+    <br>
+	<div class="col-md-12" style="background-color:#8C9EFF;">
+	   	<div class="container"> 
+			<h1>Armado de Sanguchetto</h1>
+		</div>
+		<div class="col-md-12" style="background-color:#E3F2FD;">
+			<div class="container"> 
+				<h3>¡Bienvenido! Ingrese aquí los ingredientes y condimientos de su Sanguchetto.</h3>
 				<div>
 				<br>
-
-
-
-
-<span style="display:inline-block">
-
-
+				<span style="display:inline-block">
 					<c:forEach items="${IngredientesEnStock.keySet()}" var="ingredientesStock">
 					<c:if test="${IngredientesEnStock.get(ingredientesStock) gt 0}">
 					<form:form action="agregar"  width="30" height="20" modelAttribute="ingrediente" role="form">
@@ -41,13 +51,11 @@
 						<button type="Submit" class="btn btn-success btn-xs">
 							<span class="glyphicon glyphicon-plus"></span>
 						</button>	
-</span>						
+				</span>						
 					</form:form>
 					</c:if> 
 					</c:forEach>
 				</div>
-
-
 			<br>
 
 

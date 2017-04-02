@@ -1,37 +1,64 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ include file="/WEB-INF/vistas/include.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
+
+<html lang="en">
+<head style= background-color:#E3F2FD;">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<title>Stock</title>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+	<!-- Brand and toggle get grouped for better mobile display -->
+    	<div class="navbar-header">
+        	<a class="navbar-brand" href="/Sangucheto/"><kbd>Sanguchetto</kbd></a>
+        </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-1" aria-expanded="true">
+        </div>
+    <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
 <body>
-	<div>
-		
-		<label>Stock Actual</label><br>
-		<c:forEach items= "${stockActual}" var="ingrediente">
-				Ingrediente: ${ingrediente.key.nombre}  
-			     Precio: ${ingrediente.key.precio}  
-				Cantidad: ${ingrediente.value}
-		</c:forEach>
+	<div style= background-color:#E3F2FD;">
+		<div class="col-md-12" style="background-color:#8C9EFF;">
+	    	<div class="container">
+				<h1>Sanguchetto - Stock disponible</h1>
+			</div>
+		<div>
 	</div>
-	<div>
+	<div class="col-md-12" style="background-color:#E3F2FD;">
+		<div class="container"> 
+			<div>
+			<br>
+				<div>
+					<label>Stock Actual</label><br>
+					<c:forEach items= "${stockActual}" var="ingrediente">
+						Ingrediente: ${ingrediente.key.nombre}  
+			     		Precio: ${ingrediente.key.precio}  
+						Cantidad: ${ingrediente.value}
+					</c:forEach>
+				</div>
+				<div>
 
-<%-- 		<form:form action="agregarStock" modelAttribute="ingrediente">
+<%--<form:form action="agregarstock" modelattribute="ingrediente">
 			<form:select id="nombre" path="nombre">
-				<form:option value="-" label="--Seleccione un ingrediente"/>
-                <form:options items="${stockActual}"/>
+				<form:option value="-" label="--seleccione un ingrediente"/>
+                 <form:options items="${stockactual}"/> 
 			</form:select>
-			<form:input id="cantidad" type="text" path="precio" placeholder="ingresarCantidad"></form:input>	
-			<button type="Submit">Agregar Stock</button>	
+			<form:input id="cantidad" type="text" path="precio" placeholder="ingresarcantidad"></form:input>	
+			<button type="submit">agregar stock</button>	
 			
-		</form:form>					 --%>			
+		</form:form>--%>						
 
-		<form:form action="agregarIngredienteAStock">
-			<button type="Submit">Agregar Ingrediente</button>
-		</form:form>
+					<form:form action="agregarIngredienteAStock">
+						<button type="Submit">Agregar Ingrediente</button>
+					</form:form>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
