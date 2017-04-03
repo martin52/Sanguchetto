@@ -52,6 +52,8 @@ public class Stock {
 		if(this.stock.containsKey(ingrediente)){
 			return false;
 		}
+		String aux = ingrediente.getNombre();
+		ingrediente.setNombre(Character.toUpperCase(aux.charAt(0))+aux.substring(1).toLowerCase());
 		this.stock.put(ingrediente, 0);
 		return true;
 	}

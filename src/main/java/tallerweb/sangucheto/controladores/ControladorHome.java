@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import tallerweb.sangucheto.modelo.BeanParaSelect;
 import tallerweb.sangucheto.modelo.Ingrediente;
 import tallerweb.sangucheto.modelo.Sanguchetto;
 import tallerweb.sangucheto.modelo.Stock;
@@ -66,43 +67,28 @@ public class ControladorHome {
 	@RequestMapping(path="/stock")
 	public ModelAndView stock() {
 		ModelMap model = new ModelMap();
-		Ingrediente mayonesa = new Ingrediente();
-		Ingrediente mostaza = new Ingrediente();
-		mayonesa.setNombre("Mayonesa");
-		mayonesa.setPrecio(15.22);
-		mayonesa.setTipo(TipoIngrediente.INGREDIENTE);
-		mostaza.setNombre("Mostaza");
-		mostaza.setPrecio(20.75);
-		mostaza.setTipo(TipoIngrediente.CONDIMENTO);
-		Stock.getInstance().obtenerStock().clear();
-		Stock.getInstance().agregarIngrediente(mayonesa);
-		Stock.getInstance().agregarStock(mayonesa, 25);
-		Stock.getInstance().agregarIngrediente(mostaza);
-		Stock.getInstance().agregarStock(mostaza, 2);
 		Map<Ingrediente,Integer> stock = new HashMap<Ingrediente, Integer>();
 		stock=Stock.getInstance().obtenerStock();
 		model.put("stockActual", stock);
-		model.put("ingredienteVacio", new Ingrediente());
-	
+		model.put("ingredienteYCantidad", new BeanParaSelect());
+		model.put("ingredienteAgregado", new Ingrediente());
 		return new ModelAndView("stock",model);
 	}
 	
 	@RequestMapping(path="/agregarStock", method=RequestMethod.POST)
-	public ModelAndView agregarStock(@ModelAttribute ("Ingrediente") Ingrediente ingrediente) {
-		ModelMap model = new ModelMap();
-		Stock miStock = Stock.getInstance();
-		
-		Ingrediente miIngrediente=null;
-		for(Ingrediente key : miStock.obtenerStock().keySet()){
-			if(key.getNombre().equals(ingrediente.getNombre())){
-				miIngrediente=key;
+	public String agregarStock(@ModelAttribute ("ingredienteYCantidad") BeanParaSelect ingredienteyCantidad) {
+		for(Ingrediente key : Stock.getInstance().obtenerStock().keySet()){
+			if(key.getNombre().equals(ingredienteyCantidad.getIngrediente())){
+				Stock.getInstance().agregarStock(key, ingredienteyCantidad.getCantidad());
 			}
 		}
-		Integer cantidad=Double.valueOf(ingrediente.getPrecio()).intValue();
-		System.out.println(ingrediente.getNombre()+" " +cantidad);
-		model.put("ingrediente", miIngrediente.getNombre());
-		model.put("cantidad", cantidad);
-		miStock.agregarStock(miIngrediente, cantidad);
-		return new ModelAndView("stock", model);
+		
+		return "redirect:/stock";
+	}
+	
+	@RequestMapping(path="/agregarIngredienteAStock", method=RequestMethod.POST)
+	public String agregarIngredienteAStock(@ModelAttribute("ingredienteAgregado") Ingrediente ingredienteAgregado) {
+		Stock.getInstance().agregarIngrediente(ingredienteAgregado);	
+		return "redirect:/stock";
 	}
 }
