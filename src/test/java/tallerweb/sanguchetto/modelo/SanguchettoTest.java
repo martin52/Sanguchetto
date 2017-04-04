@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Assert;
 import org.junit.Test;
 
+import tallerweb.sangucheto.modelo.Descuento;
 import tallerweb.sangucheto.modelo.Ingrediente;
 import tallerweb.sangucheto.modelo.Sanguchetto;
 import tallerweb.sangucheto.modelo.Stock;
@@ -136,13 +137,24 @@ public class SanguchettoTest {
     public void testCalcularDescuento(){
         Ingrediente jamon = new Ingrediente();
         jamon.setNombre("jamon");
-        jamon.setPrecio(15.0);
+        jamon.setPrecio(100.0);
         jamon.setTipo(TipoIngrediente.INGREDIENTE);
         Stock.getInstance().agregarIngrediente(jamon);
         Stock.getInstance().agregarStock(jamon, 10);
-        Stock.getInstance().eliminarIngrediente(jamon);
-    	assertTrue( Stock.getInstance().obtenerStockDisponible(jamon) == null );
+        Ingrediente oregano = new Ingrediente();
+        oregano.setNombre("oregano");
+        oregano.setPrecio(10.0);
+        oregano.setTipo(TipoIngrediente.CONDIMENTO);
+        Stock.getInstance().agregarIngrediente(jamon);
+        Stock.getInstance().agregarStock(jamon, 10);
+        Stock.getInstance().agregarStock(oregano, 10);
+        Sanguchetto sandwich = Sanguchetto.getInstance();
+        sandwich.vaciar();
+        sandwich.agregarIngrediente(jamon);
+        sandwich.agregarIngrediente(oregano);
+    	assertTrue( Descuento.aplicarASanguchetto( sandwich.getPrecio() ) == 88 );
     }
+ 
     
     
 }
