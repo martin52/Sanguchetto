@@ -1,7 +1,11 @@
 package tallerweb.sangucheto.modelo;
 
+import com.sun.istack.internal.NotNull;
+
 public class BeanParaSelect {
 	private String ingrediente;
+	
+	@NotNull
 	private Integer cantidad;
 
 	public String getIngrediente() {

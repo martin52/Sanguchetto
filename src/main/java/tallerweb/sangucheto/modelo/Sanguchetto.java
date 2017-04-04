@@ -1,5 +1,6 @@
 package tallerweb.sangucheto.modelo;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -79,7 +80,8 @@ public class Sanguchetto {
 		for (Ingrediente ingrediente : ingredienteYCantidad.keySet()) {
 			precio += ingrediente.getPrecio()*ingredienteYCantidad.get(ingrediente);
 		}
-		return precio;
+		
+		return  precio;
 	}
 	/////Agregados///
 	/**

@@ -73,7 +73,7 @@
 
 					</c:forEach>
 				</div>
-				<span class="label label-default"> <label>Precio:
+				<span class="label label-default"> <label>Precio:$
 						${precioSanguche}</label></span> <br> <br>
 
 			</div>

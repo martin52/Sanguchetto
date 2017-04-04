@@ -55,7 +55,7 @@
 									<c:forEach items="${stockActual}" var="ingrediente">
 										<tr>
 											<td class="col-md-4">${ingrediente.key.nombre}</td>
-											<td class="col-md-4">${ingrediente.key.precio}</td>
+											<td class="col-md-4">$ ${ingrediente.key.precio}</td>
 											<td class="col-md-4">${ingrediente.value}</td>
 										</tr>
 									</c:forEach>

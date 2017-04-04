@@ -1,5 +1,6 @@
 package tallerweb.sangucheto.controladores;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,10 +23,11 @@ public class ControladorHome {
 	@RequestMapping(path = "/")
 	public ModelAndView irAHome() {
 		ModelMap model = new ModelMap();
+		DecimalFormat df = new DecimalFormat("0.00");
 		model.put("IngredientesSangucheto", Sanguchetto.getInstance().verIngredientesYCantidad());
 		model.put("IngredientesEnStock", Stock.getInstance().obtenerStock());
 		model.put("ingrediente", new Ingrediente());
-		model.put("precioSanguche", Sanguchetto.getInstance().getPrecio());
+		model.put("precioSanguche", df.format(Sanguchetto.getInstance().getPrecio()).toString());
 		return new ModelAndView("home", model);
 	}
 
@@ -48,8 +50,9 @@ public class ControladorHome {
 	@RequestMapping(path = "/confirmarSanguche", method = RequestMethod.POST)
 	public ModelAndView confirmarSanguche() {
 		ModelMap model = new ModelMap();
+		DecimalFormat df = new DecimalFormat("0.00");
 		model.put("sanguche", Sanguchetto.getInstance().verIngredientesYCantidad());
-		model.put("precio", Sanguchetto.getInstance().getPrecio());
+		model.put("precio", df.format(Sanguchetto.getInstance().getPrecio()).toString());
 		return new ModelAndView("confirmar", model);
 	}
 
@@ -76,13 +79,17 @@ public class ControladorHome {
 	}
 
 	@RequestMapping(path = "/agregarStock", method = RequestMethod.POST)
-	public String agregarStock(@ModelAttribute("ingredienteYCantidad") BeanParaSelect ingredienteyCantidad) {
+	public String agregarStock(@ModelAttribute("ingredienteYCantidad") BeanParaSelect ingredienteyCantidad, BindingResult result) {
+		if(ingredienteyCantidad.getCantidad() == null || ingredienteyCantidad.getCantidad() < 0)
+			result.rejectValue("cantidad", "precNoVal");
+		if (result.hasErrors())
+			return "redirect:/stock";
 		for (Ingrediente key : Stock.getInstance().obtenerStock().keySet()) {
 			if (key.getNombre().equals(ingredienteyCantidad.getIngrediente())) {
 				Stock.getInstance().agregarStock(key, ingredienteyCantidad.getCantidad());
 			}
 		}
-
+	
 		return "redirect:/stock";
 	}
 
