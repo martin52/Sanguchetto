@@ -37,9 +37,9 @@
 			<table class="table table-bordered">
 				<thead>
 									<tr>
-							<th class="col-md-4">Nombre</th>
+							<th class="col-md-4">Ingrediente</th>
 							<th class="col-md-4">Precio unitario</th>
-							<th class="col-md-4">Cantidad Comprada</th>
+							<th class="col-md-4">Cantidad Deseada</th>
 						</tr>
 				</thead>
 				<tbody>
@@ -52,7 +52,7 @@
 							</c:forEach>
 				</tbody>		
 			</table>
-						<span class="label label-default"> <label>Precio:
+						<span class="label label-default"> <label>Precio Final:
 						${precio}</label></span> <br> <br>
 					</div>
 				</div>

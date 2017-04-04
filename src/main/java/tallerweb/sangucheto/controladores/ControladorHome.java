@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import tallerweb.sangucheto.modelo.BeanParaSelect;
+import tallerweb.sangucheto.modelo.Descuento;
 import tallerweb.sangucheto.modelo.Ingrediente;
 import tallerweb.sangucheto.modelo.Sanguchetto;
 import tallerweb.sangucheto.modelo.Stock;
@@ -27,7 +28,10 @@ public class ControladorHome {
 		model.put("IngredientesSangucheto", Sanguchetto.getInstance().verIngredientesYCantidad());
 		model.put("IngredientesEnStock", Stock.getInstance().obtenerStock());
 		model.put("ingrediente", new Ingrediente());
-		model.put("precioSanguche", df.format(Sanguchetto.getInstance().getPrecio()).toString());
+		model.put("descuento", Descuento.correspondeDescuento(Sanguchetto.getInstance().getPrecio()));
+		model.put("precioSangucheFinal", df.format(Descuento.aplicarASanguchetto(Sanguchetto.getInstance().getPrecio())).toString());
+		model.put("precioSangucheSinDescuento", df.format(Sanguchetto.getInstance().getPrecio()).toString());
+		model.put("porcentajeDeDescuento", df.format(Descuento.getPorcentajeDeDescuento()).toString());
 		return new ModelAndView("home", model);
 	}
 
@@ -52,7 +56,7 @@ public class ControladorHome {
 		ModelMap model = new ModelMap();
 		DecimalFormat df = new DecimalFormat("0.00");
 		model.put("sanguche", Sanguchetto.getInstance().verIngredientesYCantidad());
-		model.put("precio", df.format(Sanguchetto.getInstance().getPrecio()).toString());
+		model.put("precio", df.format(Descuento.aplicarASanguchetto(Sanguchetto.getInstance().getPrecio())).toString());
 		return new ModelAndView("confirmar", model);
 	}
 

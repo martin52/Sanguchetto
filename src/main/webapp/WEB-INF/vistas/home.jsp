@@ -73,8 +73,14 @@
 
 					</c:forEach>
 				</div>
-				<span class="label label-default"> <label>Precio:$
-						${precioSanguche}</label></span> <br> <br>
+				<c:if test="${descuento eq true}">
+					<span class="label label-default"> <label>Precio sin descuento:$
+						${precioSangucheSinDescuento}</label></span> <br>
+					<span class="label label-default"> <label>Descuento:
+						${porcentajeDeDescuento}%</label></span><br>
+				</c:if>
+				<span class="label label-default"> <label>Precio Final:$
+						${precioSangucheFinal}</label></span> <br> <br>
 
 			</div>
 
