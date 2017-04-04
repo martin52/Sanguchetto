@@ -28,10 +28,15 @@ public class ControladorHome {
 		model.put("IngredientesSangucheto", Sanguchetto.getInstance().verIngredientesYCantidad());
 		model.put("IngredientesEnStock", Stock.getInstance().obtenerStock());
 		model.put("ingrediente", new Ingrediente());
+		model.put("ingredienteASacar", new Ingrediente());
 		model.put("descuento", Descuento.correspondeDescuento(Sanguchetto.getInstance().getPrecio()));
 		model.put("precioSangucheFinal", df.format(Descuento.aplicarASanguchetto(Sanguchetto.getInstance().getPrecio())).toString());
 		model.put("precioSangucheSinDescuento", df.format(Sanguchetto.getInstance().getPrecio()).toString());
 		model.put("porcentajeDeDescuento", df.format(Descuento.getPorcentajeDeDescuento()).toString());
+		model.put("cantidadDeIngredientes",Sanguchetto.getInstance().verIngredientes().size());
+		model.put("cantidadDeCondimentos", Sanguchetto.getInstance().verCondimentos().size());
+		model.put("stockIngredientes", Sanguchetto.getInstance().verIngredientes().size());
+		model.put("stockCondimentos", Sanguchetto.getInstance().verCondimentos().size());
 		return new ModelAndView("home", model);
 	}
 
@@ -55,6 +60,12 @@ public class ControladorHome {
 	public ModelAndView confirmarSanguche() {
 		ModelMap model = new ModelMap();
 		DecimalFormat df = new DecimalFormat("0.00");
+		
+		model.put("precioSangucheSinDescuento", df.format(Sanguchetto.getInstance().getPrecio()).toString());
+		model.put("porcentajeDeDescuento", df.format(Descuento.getPorcentajeDeDescuento()).toString());
+		model.put("cantidadDeIngredientes",Sanguchetto.getInstance().verIngredientes().size());
+		model.put("cantidadDeCondimentos", Sanguchetto.getInstance().verCondimentos().size());
+		model.put("descuento", Descuento.correspondeDescuento(Sanguchetto.getInstance().getPrecio()));
 		model.put("sanguche", Sanguchetto.getInstance().verIngredientesYCantidad());
 		model.put("precio", df.format(Descuento.aplicarASanguchetto(Sanguchetto.getInstance().getPrecio())).toString());
 		return new ModelAndView("confirmar", model);
@@ -113,5 +124,12 @@ public class ControladorHome {
 	public String borrarIngredienteDeStock(@ModelAttribute("ingredienteABorrar")Ingrediente ingredienteABorrar) {
 		Stock.getInstance().eliminarIngrediente(ingredienteABorrar);
 		return "redirect:/stock";
+	}
+	
+	@RequestMapping(path="/sacarDeSanguchetto", method = RequestMethod.POST)
+	public String sacarDeSanguchetto(@ModelAttribute("ingredienteASacar")Ingrediente ingredienteASacar){
+		Sanguchetto.getInstance().sacarIngrediente(ingredienteASacar);
+		Stock.getInstance().agregarStock(ingredienteASacar, 1);
+		return "redirect:/";
 	}
 }

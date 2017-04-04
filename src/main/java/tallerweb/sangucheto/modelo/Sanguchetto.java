@@ -31,7 +31,7 @@ public class Sanguchetto {
 	 * @param ingrediente
 	 */
 	public void agregarIngrediente(Ingrediente ingrediente){
-		//if(!(ingredientes.contains(ingrediente))) // tirar exception por ingrediente existente
+		if(!(ingredientes.contains(ingrediente))) // tirar exception por ingrediente existente
 			ingredientes.add(ingrediente);
 		if(ingredienteYCantidad.containsKey(ingrediente)) {
 			Integer nuevaCantidad = ingredienteYCantidad.get(ingrediente)+1;
@@ -49,7 +49,7 @@ public class Sanguchetto {
 	public List<Ingrediente> verIngredientes(){
 		// Implementar
 		List<Ingrediente> soloIngredientes = new LinkedList<Ingrediente>();
-        for (Ingrediente ingrediente : ingredientes) {
+        for (Ingrediente ingrediente : ingredienteYCantidad.keySet()) {
         	if(ingrediente.getTipo().equals(TipoIngrediente.INGREDIENTE)){
         		soloIngredientes.add(ingrediente);
         	}				
@@ -63,7 +63,7 @@ public class Sanguchetto {
     public List<Ingrediente> verCondimentos(){
         // Implementar
     	List<Ingrediente> condimentos = new LinkedList<Ingrediente>();
-        for (Ingrediente ingrediente : ingredientes) {
+        for (Ingrediente ingrediente : ingredienteYCantidad.keySet()) {
         	if(ingrediente.getTipo().equals(TipoIngrediente.CONDIMENTO))
 				condimentos.add(ingrediente);
 		}
@@ -94,5 +94,14 @@ public class Sanguchetto {
 	public HashMap<Ingrediente,Integer> verIngredientesYCantidad(){
 		return ingredienteYCantidad;
 	}
-
+	
+	public void sacarIngrediente(Ingrediente ingrediente){
+		
+		if(ingredienteYCantidad.containsKey(ingrediente)) {
+			Integer nuevaCantidad = ingredienteYCantidad.get(ingrediente)-1;
+			ingredienteYCantidad.put(ingrediente, nuevaCantidad);
+		}
+		if(ingredienteYCantidad.get(ingrediente) == 0)
+			ingredienteYCantidad.remove(ingrediente);
+	}
 }

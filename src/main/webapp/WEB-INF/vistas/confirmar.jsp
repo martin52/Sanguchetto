@@ -34,24 +34,81 @@
 						correctos para realizar la compra.</h3>
 					<div>
 						<br>
-			<table class="table table-bordered">
-				<thead>
-									<tr>
-							<th class="col-md-4">Ingrediente</th>
-							<th class="col-md-4">Precio unitario</th>
-							<th class="col-md-4">Cantidad Deseada</th>
-						</tr>
-				</thead>
-				<tbody>
-							<c:forEach items="${sanguche.keySet()}" var="ingredientes">
-								<tr>
-									<td class="col-md-4">${ingredientes.nombre}</td>
-									<td class="col-md-4">${ingredientes.precio}</td>
-									<td class="col-md-4">${sanguche.get(ingredientes)}</td>
-								</tr>
-							</c:forEach>
-				</tbody>		
-			</table>
+						<c:if test="${cantidadDeIngredientes ne 0}">
+			<table>
+					<tr>
+						<td class="col-md-5">
+							<div class="panel panel-primary">
+								<div class="panel-heading">Ingredientes en su Sanguchetto</div>
+								<table class="table">
+									<thead>
+										<tr>
+											<th class="col-md-2">Nombre</th>
+											<th class="col-md-4">Precio Unitario</th>
+											<th class="col-md-1">Cantidad</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${sanguche.keySet()}"
+											var="ingrediente">
+											<c:if test="${ingrediente.tipo eq 'INGREDIENTE'}">
+												<tr>
+													<td class="col-md-3">${ingrediente.nombre}</td>
+													<td class="col-md-2">${ingrediente.precio}</td>
+													<td class="col-md-1">${sanguche.get(ingrediente)}</td>
+													<td class="col-md-1">
+														
+													</td>
+												</tr>
+											</c:if>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</td>
+						</c:if>
+						<c:if test="${cantidadDeCondimentos ne 0}">
+						<td class="col-md-5">
+							<div class="panel panel-primary">
+								<div class="panel-heading">Condimentos en su Sanguchetto</div>
+								<table class="table">
+									<thead>
+										<tr>
+											<th class="col-md-2">Nombre</th>
+											<th class="col-md-4">Precio Unitario</th>
+											<th class="col-md-1">Cantidad</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${sanguche.keySet()}"
+											var="ingrediente">
+											<c:if test="${ingrediente.tipo eq 'CONDIMENTO'}">
+												<tr>
+													<td class="col-md-3">${ingrediente.nombre}</td>
+													<td class="col-md-2">${ingrediente.precio}</td>
+													<td class="col-md-1">${sanguche.get(ingrediente)}</td>
+													<td class="col-md-1">
+														
+													</td>
+												</tr>
+											</c:if>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</td>
+						</c:if>
+					</tr>
+				</table>
+					<c:if test="${descuento eq true}">
+						<span class="label label-default"> <label>Precio sin
+								descuento:$ ${precioSangucheSinDescuento}</label></span>
+						<br>
+						<span class="label label-default"> <label>Descuento:
+								${porcentajeDeDescuento}%</label></span>
+						<br>
+					</c:if>
 						<span class="label label-default"> <label>Precio Final:
 						${precio}</label></span> <br> <br>
 					</div>
@@ -65,7 +122,7 @@
 						</form:form>
 					</div>	
 						<form:form action="agregarMas">
-							<button type="submit" class="btn btn-primary">Agregar Más</button>
+							<button type="submit" class="btn btn-primary">Modificar</button>
 						</form:form>
 				</div>
 			</div>

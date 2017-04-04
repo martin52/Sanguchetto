@@ -18,8 +18,7 @@
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
 			<ul class="nav navbar-nav">
-			    <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="http://localhost:8080/Sangucheto/">Sanguchetto</a></li>
-                <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="http://localhost:8080/Sangucheto/">Home</a></li>
+			    <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="http://localhost:8080/Sangucheto/">Armar el Sanguchetto</a></li>
                 <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="http://localhost:8080/Sangucheto/stock">Stock</a></li>
             </ul>
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -37,7 +36,7 @@
 				<div class="container">
 					<br>
 					<div class="row">
-						<div class="panel panel-default">
+						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h4>
 									<label>Stock Actual</label><br>
@@ -92,7 +91,7 @@
 						<form:option value="INGREDIENTE" label="Ingrediente" />
 						<form:option value="CONDIMENTO" label="Condimento" />
 					</form:select>
-					<button type="Submit">Agregar Ingrediente</button>
+					<button type="Submit" class="btn btn-primary">Agregar Ingrediente</button>
 				</form:form>
 				<label>Agregar Stock a ingrediente</label>
 				<form:form action="agregarStock"
@@ -104,13 +103,11 @@
 					</form:select>
 					<form:input id="cantidad" type="number" path="cantidad"
 						placeholder="ingresar cantidad"></form:input>
-					<button type="submit">agregar stock</button>
+					<button type="submit" class="btn btn-primary">agregar stock</button>
 				</form:form>
 			</div>
 		</div>
 	</div>
-				<div class="link-volador-izquierda">
-				<a href="./"><button class="btn btn-link">Volver</button></a>
-			</div>
+				
 </body>
 </html>
