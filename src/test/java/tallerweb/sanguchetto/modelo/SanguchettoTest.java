@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import tallerweb.sangucheto.modelo.Ingrediente;
 import tallerweb.sangucheto.modelo.Sanguchetto;
+import tallerweb.sangucheto.modelo.Stock;
 import tallerweb.sangucheto.modelo.TipoIngrediente;
 
 public class SanguchettoTest {
@@ -98,4 +99,50 @@ public class SanguchettoTest {
         sandwich.agregarIngrediente(pollo);        
         assertTrue(pollo.getPrecio()==50.0);
     }
+    //Otros Test
+    @Test
+    public void testObtenerStock() {
+        Ingrediente jamon = new Ingrediente();
+        jamon.setNombre("jamon");
+        jamon.setPrecio(15.0);
+        jamon.setTipo(TipoIngrediente.INGREDIENTE);
+        Stock.getInstance().agregarIngrediente(jamon);
+        Stock.getInstance().agregarStock(jamon, 10);
+    	assertTrue( Stock.getInstance().obtenerStockDisponible(jamon) == 10 );
+    }
+    @Test
+    public void testVaciarStock(){
+        Ingrediente jamon = new Ingrediente();
+        jamon.setNombre("jamon");
+        jamon.setPrecio(15.0);
+        jamon.setTipo(TipoIngrediente.INGREDIENTE);
+        Stock.getInstance().agregarIngrediente(jamon);
+        Stock.getInstance().agregarStock(jamon, 10);
+        Stock.getInstance().comprarIngrediente(jamon, 10);
+    	assertTrue( Stock.getInstance().obtenerStockDisponible(jamon) == 0 );
+    }
+    @Test
+    public void testBorrarIngredienteStock(){
+        Ingrediente jamon = new Ingrediente();
+        jamon.setNombre("jamon");
+        jamon.setPrecio(15.0);
+        jamon.setTipo(TipoIngrediente.INGREDIENTE);
+        Stock.getInstance().agregarIngrediente(jamon);
+        Stock.getInstance().agregarStock(jamon, 10);
+        Stock.getInstance().eliminarIngrediente(jamon);
+    	assertTrue( Stock.getInstance().obtenerStockDisponible(jamon) == null );
+    }
+    @Test
+    public void testCalcularDescuento(){
+        Ingrediente jamon = new Ingrediente();
+        jamon.setNombre("jamon");
+        jamon.setPrecio(15.0);
+        jamon.setTipo(TipoIngrediente.INGREDIENTE);
+        Stock.getInstance().agregarIngrediente(jamon);
+        Stock.getInstance().agregarStock(jamon, 10);
+        Stock.getInstance().eliminarIngrediente(jamon);
+    	assertTrue( Stock.getInstance().obtenerStockDisponible(jamon) == null );
+    }
+    
+    
 }
