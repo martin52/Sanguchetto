@@ -2,37 +2,31 @@
 <%@ include file="/WEB-INF/vistas/include.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<meta charset="utf-8">
-	    <link rel="stylesheet" href="css/bootstrap.min.css">
-	    
-		<title>Home</title>
-	</head>
-	
-	<body>
- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/Sangucheto/"><kbd>Sanguchetto</kbd></a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-1" aria-expanded="true">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<title>Home</title>
 
-            </div>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+ 	<div class="container">
+    	<!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+        	<a class="navbar-brand" href="/Sangucheto/"><kbd>Sanguchetto</kbd></a>
+        </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-1" aria-expanded="true">
+	</div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
-    </nav>
-    <br>
-    <br>
+	<body>
 	<div class="col-md-12" style="background-color:#8C9EFF;">
 	   	<div class="container"> 
 			<h1>Armado de Sanguchetto</h1>
 		</div>
-		<div class="col-md-12" style="background-color:#E3F2FD;">
+		<div class="col-md-12" style="background-color:#8C9EFF;">
 			<div class="container"> 
 				<h3>¡Bienvenido! Ingrese aquí los ingredientes y condimientos de su Sanguchetto.</h3>
 				<div>
@@ -70,8 +64,10 @@
 			<br>
 			<br>
 			<div>
+			
+
 			<div class="row">
-  					<div class="col-xs-2 col-md-2">
+  					<div class="col-xs-1 col-md-1">
 				<form:form action="confirmarSanguche">	
 						 <button type="Submit" class="btn btn-primary">Agregar</button>
 				</form:form>
@@ -83,7 +79,9 @@
 			</div>	
 			</div>
 			</div>
+			<br>
 			</div>
+			<br>
 			
 </div>
 </div>
