@@ -89,10 +89,10 @@ public class ControladorHome {
 	@RequestMapping(path = "/agregarIngredienteAStock", method = RequestMethod.POST)
 	public String agregarIngredienteAStock(@ModelAttribute("ingredienteAgregado") Ingrediente ingredienteAgregado,
 			BindingResult result) {
-//		if (ingredienteAgregado.getPrecio() < 0)
-//			result.rejectValue("precio", "precNoVal");
-//		if (result.hasErrors())
-//			return "redirect:/stock";
+		if (ingredienteAgregado.getPrecio() == null || ingredienteAgregado.getPrecio()< 0)
+			result.rejectValue("precio", "precNoVal");
+		if (result.hasErrors() || ingredienteAgregado.getNombre().isEmpty())
+			return "redirect:/stock";
 		Stock.getInstance().agregarIngrediente(ingredienteAgregado);
 		return "redirect:/stock";
 	}

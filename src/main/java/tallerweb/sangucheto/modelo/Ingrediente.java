@@ -1,8 +1,12 @@
 package tallerweb.sangucheto.modelo;
 
+import com.sun.istack.internal.NotNull;
+
 public class Ingrediente {
 
     private String nombre;
+    
+    @NotNull
     private Double precio;
     private TipoIngrediente tipo;
     
@@ -15,6 +19,7 @@ public class Ingrediente {
     public Double getPrecio() {
         return precio;
     }
+    @NotNull
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
