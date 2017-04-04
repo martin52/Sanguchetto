@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head style=background-color:#E3F2FD;">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta charset="utf-8">
@@ -69,10 +70,34 @@
 
  			</form:form>
 							</div>
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th class="col-md-4">Nombre</th>
+										<th class="col-md-4">Precio</th>
+										<th class="col-md-4">Cantidad</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${stockActual}" var="ingrediente">
+										<tr>
+											<td class="col-md-4">${ingrediente.key.nombre}</td>
+											<td class="col-md-4">${ingrediente.key.precio}</td>
+											<td class="col-md-4">${ingrediente.value}</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
 						</div>
 <br>
 <br>
 					</div>
 				</div>
-	</body>
+			</div>
+		<div>
+
+			</div>
+		</div>
+	</div>
+</body>
 </html>

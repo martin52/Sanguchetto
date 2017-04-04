@@ -1,8 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/vistas/include.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/vistas/include.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta charset="utf-8">
@@ -29,42 +31,41 @@
 		<div class="col-md-12" style="background-color:#8C9EFF;">
 			<div class="container"> 
 				<h3>¡Bienvenido! Ingrese aquí los ingredientes y condimientos de su Sanguchetto.</h3>
+
 				<div>
-				<br>
-				<span style="display:inline-block">
-					<c:forEach items="${IngredientesEnStock.keySet()}" var="ingredientesStock">
-					<c:if test="${IngredientesEnStock.get(ingredientesStock) gt 0}">
-					<form:form action="agregar"  width="30" height="20" modelAttribute="ingrediente" role="form">
-						<label>
-							${ingredientesStock.nombre} 
-				     		${ingredientesStock.precio}
-				    	</label>
-						<form:input class="button" id ="nombre" path="nombre" type="hidden" value="${ingredientesStock.nombre}" />
-						<form:input id="apellido" path="precio" type="hidden" value="${ingredientesStock.precio}" />
-						<form:input id="tipo" path="tipo" type="hidden" value="${ingredientesStock.tipo}" /> 
-						<button type="Submit" class="btn btn-success btn-xs">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>	
-				</span>						
+					<br> <span style="display: inline-block"> <c:forEach
+							items="${IngredientesEnStock.keySet()}" var="ingredientesStock">
+							<c:if test="${IngredientesEnStock.get(ingredientesStock) gt 0}">
+								<form:form action="agregar" width="30" height="20"
+									modelAttribute="ingrediente" role="form">
+									<label> ${ingredientesStock.nombre}
+										${ingredientesStock.precio} </label>
+									<form:input class="button" id="nombre" path="nombre"
+										type="hidden" value="${ingredientesStock.nombre}" />
+									<form:input id="apellido" path="precio" type="hidden"
+										value="${ingredientesStock.precio}" />
+									<form:input id="tipo" path="tipo" type="hidden"
+										value="${ingredientesStock.tipo}" />
+									<button type="Submit" class="btn btn-success btn-xs">
+										<span class="glyphicon glyphicon-plus"></span>
+									</button></span>
 					</form:form>
-					</c:if> 
+					</c:if>
 					</c:forEach>
 				</div>
-			<br>
+				<br>
 
 
-			<div>
-				<c:forEach items="${IngredientesSangucheto.keySet()}" var="ingrediente">
-					<label>${ingrediente.nombre}</label> ${ingrediente.precio} Cantidad: ${IngredientesSangucheto.get(ingrediente)}<br>
+				<div>
+					<c:forEach items="${IngredientesSangucheto.keySet()}"
+						var="ingrediente">
+						<label>${ingrediente.nombre}</label> ${ingrediente.precio} Cantidad: ${IngredientesSangucheto.get(ingrediente)}<br>
 
-				</c:forEach>
-			</div>
-			<span class="label label-default">
-			<label>Precio: ${precioSanguche}</label></span>
-			<br>
-			<br>
-			<div>
-			
+					</c:forEach>
+				</div>
+				<span class="label label-default"> <label>Precio:
+						${precioSanguche}</label></span> <br> <br>
+
 
 			<div class="row">
   					<div class="col-xs-1 col-md-1">
@@ -76,6 +77,10 @@
 				<form:form action="cancelarSanguche">	
 						 <button type="Submit" class="btn btn-danger">Cancelar</button>
 				</form:form>
+				
+			</div>
+			<br>
+			<br>
 			</div>	
 			</div>
 			</div>
@@ -86,6 +91,7 @@
 </div>
 </div>
 
+
 	</div>
-	</body>
+</body>
 </html>
