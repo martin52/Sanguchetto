@@ -79,6 +79,7 @@ public class ControladorHome {
 		model.put("stockActual", stock);
 		model.put("ingredienteYCantidad", new BeanParaSelect());
 		model.put("ingredienteAgregado", new Ingrediente());
+		model.put("ingredienteABorrar", new Ingrediente());
 		return new ModelAndView("stock", model);
 	}
 
@@ -105,6 +106,12 @@ public class ControladorHome {
 		if (result.hasErrors() || ingredienteAgregado.getNombre().isEmpty())
 			return "redirect:/stock";
 		Stock.getInstance().agregarIngrediente(ingredienteAgregado);
+		return "redirect:/stock";
+	}
+	
+	@RequestMapping(path="/borrarIngredienteDeStock", method = RequestMethod.POST)
+	public String borrarIngredienteDeStock(@ModelAttribute("ingredienteABorrar")Ingrediente ingredienteABorrar) {
+		Stock.getInstance().eliminarIngrediente(ingredienteABorrar);
 		return "redirect:/stock";
 	}
 }

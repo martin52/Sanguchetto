@@ -59,8 +59,8 @@
 									<button type="Submit" class="btn btn-success btn-xs">
 										<span class="glyphicon glyphicon-plus"></span>
 									</button></span>
-					</form:form>
-					</c:if>
+								</form:form>
+							</c:if>
 					</c:forEach>
 				</div>
 				<br>

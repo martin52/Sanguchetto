@@ -56,7 +56,20 @@
 										<tr>
 											<td class="col-md-4">${ingrediente.key.nombre}</td>
 											<td class="col-md-4">$ ${ingrediente.key.precio}</td>
-											<td class="col-md-4">${ingrediente.value}</td>
+											<td class="col-md-2">${ingrediente.value}</td>
+											<td class="col-md-2">
+												<form:form action="borrarIngredienteDeStock" modelAttribute="ingredienteABorrar">
+													<form:input id="nombre" path="nombre"
+														type="hidden" value="${ingrediente.key.nombre}" />
+													<form:input id="apellido" path="precio" type="hidden"
+														value="${ingrediente.key.precio}" />
+													<form:input id="tipo" path="tipo" type="hidden"
+														value="${ingrediente.key.tipo}" />
+													<button type="Submit" class="btn btn-danger btn-xs">
+														<span class="glyphicon glyphicon-trash"></span>
+													</button>
+												</form:form>	
+											</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -71,7 +84,7 @@
 					modelAttribute="ingredienteAgregado">
 
 					<form:input path="nombre" id="nombre" type="text"
-						placeholder="Ingrese nombre del ingrediente" />
+						placeholder="Nombre del ingrediente" />
 					<form:input path="precio" id="precio" type="number" min="0.01" step="0.01"
 						placeholder="Precio" />
 <%-- 					<form:errors path="precio" cssClass="rojo"/> --%>
