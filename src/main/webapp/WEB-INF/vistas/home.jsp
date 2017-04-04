@@ -18,8 +18,13 @@
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/Sangucheto/"><kbd>Sanguchetto</kbd></a>
+				
 			</div>
+			<ul class="nav navbar-nav">
+			    <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="http://localhost:8080/Sangucheto/">Sanguchetto</a></li>
+                <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="http://localhost:8080/Sangucheto/">Home</a></li>
+                <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="http://localhost:8080/Sangucheto/stock">Stock</a></li>
+            </ul>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="navbar-collapse collapse in"
 				id="bs-example-navbar-collapse-1" aria-expanded="true"></div>
