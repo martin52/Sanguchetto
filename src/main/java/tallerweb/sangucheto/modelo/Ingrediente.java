@@ -3,7 +3,6 @@ package tallerweb.sangucheto.modelo;
 import com.sun.istack.internal.NotNull;
 
 public class Ingrediente {
-
     private String nombre;
     
     @NotNull

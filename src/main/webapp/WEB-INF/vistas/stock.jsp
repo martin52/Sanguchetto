@@ -10,7 +10,24 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <title>Stock</title>
-
+<script type="text/javascript">
+function validar(e) { // 1
+tecla = (document.all) ? e.keyCode : e.which; // 2
+if (tecla==8) return true; // 3
+patron =/[A-Za-z\s]/; // 4
+te = String.fromCharCode(tecla); // 5
+return patron.test(te); // 6
+}
+</script>
+<script type="text/javascript">
+function numeros(nu) { // 1
+tecla = (document.all) ? e.keyCode : e.which; // 2
+if (tecla==8) return true; // 3
+ppatron = /\d/; // Solo acepta números// 4
+te = String.fromCharCode(tecla); // 5
+return patron.test(te); // 6
+}
+</script>
 <!-- /.container -->
 <body>
 	<div style="background-color: #E3F2FD;">
@@ -83,7 +100,7 @@
 					modelAttribute="ingredienteAgregado">
 
 					<form:input path="nombre" id="nombre" type="text"
-						placeholder="Nombre del ingrediente" />
+						placeholder="Nombre del ingrediente" onkeypress="return validar(event)"/>
 					<form:input path="precio" id="precio" type="number" min="0.01" step="0.01"
 						placeholder="Precio" />
 <%-- 					<form:errors path="precio" cssClass="rojo"/> --%>

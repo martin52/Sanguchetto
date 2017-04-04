@@ -3,6 +3,8 @@ package tallerweb.sangucheto.controladores;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -112,6 +114,7 @@ public class ControladorHome {
 	@RequestMapping(path = "/agregarIngredienteAStock", method = RequestMethod.POST)
 	public String agregarIngredienteAStock(@ModelAttribute("ingredienteAgregado") Ingrediente ingredienteAgregado,
 			BindingResult result) {
+
 		if (ingredienteAgregado.getPrecio() == null || ingredienteAgregado.getPrecio()< 0)
 			result.rejectValue("precio", "precNoVal");
 		if (result.hasErrors() || ingredienteAgregado.getNombre().isEmpty())
