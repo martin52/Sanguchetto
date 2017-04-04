@@ -70,7 +70,7 @@
 
 					<form:input path="nombre" id="nombre" type="text"
 						placeholder="Ingrese nombre del ingrediente" />
-					<form:input path="precio" id="precio" type="text"
+					<form:input path="precio" id="precio" type="number" min="0.01" step="0.01"
 						placeholder="Precio" />
 <%-- 					<form:errors path="precio" cssClass="rojo"/> --%>
 					<form:select path="tipo">

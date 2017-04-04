@@ -77,7 +77,7 @@
 		</div>
 		<div class="container">
 					<div class="row">
-						<div class="col-xs-2 col-md-2">
+						<div class="col-md-2 col-md-2">
 							<form:form action="confirmarSanguche">
 								<button type="Submit" class="btn btn-primary">Confirmar</button>
 							</form:form>
