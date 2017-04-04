@@ -49,12 +49,12 @@ public class Sanguchetto {
 		// Implementar
 		List<Ingrediente> soloIngredientes = new LinkedList<Ingrediente>();
         for (Ingrediente ingrediente : ingredientes) {
-        	if(ingrediente.getTipo().toString().toLowerCase() == "ingrediente")
-				soloIngredientes.add(ingrediente);
+        	if(ingrediente.getTipo().equals(TipoIngrediente.INGREDIENTE)){
+        		soloIngredientes.add(ingrediente);
+        	}				
 		}
     	return soloIngredientes;
 	}
-	
 	/**
      * Lista todos los condimentos que forman parte del sanguchetto.<br>
      * @return
@@ -63,7 +63,7 @@ public class Sanguchetto {
         // Implementar
     	List<Ingrediente> condimentos = new LinkedList<Ingrediente>();
         for (Ingrediente ingrediente : ingredientes) {
-        	if(ingrediente.getTipo().toString().toLowerCase() == "condimento")
+        	if(ingrediente.getTipo().equals(TipoIngrediente.CONDIMENTO))
 				condimentos.add(ingrediente);
 		}
     	return condimentos;
