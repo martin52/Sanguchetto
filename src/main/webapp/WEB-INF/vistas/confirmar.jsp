@@ -127,8 +127,5 @@
 				</div>
 			</div>
 		</div>
-						<div class="link-volador-izquierda">
-				<a href="./"><button class="btn btn-link">Volver</button></a>
-			</div>
 	</body>
 </html>

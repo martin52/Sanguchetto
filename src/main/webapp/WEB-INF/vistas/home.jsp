@@ -216,9 +216,19 @@
 															<td class="col-md-2">${ingrediente.precio}</td>
 															<td class="col-md-1">${IngredientesSangucheto.get(ingrediente)}</td>
 															<td class="col-md-1">
+																<form:form
+																action="sacarDeSanguchetto"
+																modelAttribute="ingredienteASacar">
+																<form:input id="nombre" path="nombre" type="hidden"
+																	value="${ingrediente.nombre}" />
+																<form:input id="apellido" path="precio" type="hidden"
+																	value="${ingrediente.precio}" />
+																<form:input id="tipo" path="tipo" type="hidden"
+																	value="${ingrediente.tipo}" />
 																<button type="Submit" class="btn btn-danger btn-xs">
 																	<span class="glyphicon glyphicon-minus"></span>
 																</button>
+															</form:form>
 															</td>
 														</tr>
 													</c:if>
