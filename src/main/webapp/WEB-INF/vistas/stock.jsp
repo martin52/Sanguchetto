@@ -11,21 +11,21 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <title>Stock</title>
 <script type="text/javascript">
-function validar(e) { // 1
-tecla = (document.all) ? e.keyCode : e.which; // 2
-if (tecla==8) return true; // 3
-patron =/[A-Za-z\s]/; // 4
-te = String.fromCharCode(tecla); // 5
-return patron.test(te); // 6
-}
+	function validar(e) { // 1
+	tecla = (document.all) ? e.keyCode : e.which; // 2
+	if (tecla==8) return true; // 3
+	patron =/[A-Za-z\s]/; // 4
+	te = String.fromCharCode(tecla); // 5
+	return patron.test(te); // 6
+	}
 </script>
 <script type="text/javascript">
-function numeros(nu) { // 1
-tecla = (document.all) ? e.keyCode : e.which; // 2
-if (tecla==8) return true; // 3
-ppatron = /\d/; // Solo acepta números// 4
-te = String.fromCharCode(tecla); // 5
-return patron.test(te); // 6
+	function numeros(nu) { // 1
+	tecla = (document.all) ? e.keyCode : e.which; // 2
+	if (tecla==8) return true; // 3
+	ppatron = /\d/; // Solo acepta números// 4
+	te = String.fromCharCode(tecla); // 5
+	return patron.test(te); // 6
 }
 </script>
 <!-- /.container -->
@@ -104,7 +104,7 @@ return patron.test(te); // 6
 					<form:input path="precio" id="precio" type="number" min="0.01" step="0.01"
 						placeholder="Precio" />
 <%-- 					<form:errors path="precio" cssClass="rojo"/> --%>
-					<form:select path="tipo">
+					<form:select path="tipo" style="height:26px">
 						<form:option value="INGREDIENTE" label="Ingrediente" />
 						<form:option value="CONDIMENTO" label="Condimento" />
 					</form:select>
@@ -113,14 +113,14 @@ return patron.test(te); // 6
 				<label>Agregar Stock a ingrediente</label>
 				<form:form action="agregarStock"
 					modelAttribute="ingredienteYCantidad">
-					<form:select path="ingrediente">
+					<form:select path="ingrediente" style="height:26px">
 						<form:option value="NONE" label="--seleccione un ingrediente" />
 						<form:options items="${stockActual.keySet()}" itemLabel="nombre"
 							itemValue="nombre" />
 					</form:select>
 					<form:input id="cantidad" type="number" path="cantidad"
 						placeholder="ingresar cantidad"></form:input>
-					<button type="submit" class="btn btn-primary">agregar stock</button>
+					<button type="submit" class="btn btn-primary">Agregar Stock</button>
 				</form:form>
 			</div>
 		</div>

@@ -10,25 +10,30 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <title>Confirmacion</title>
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	<div class="container">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<a class="navbar-brand" href="/Sangucheto/"><kbd>Sanguchetto</kbd></a>
-		</div>
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="navbar-collapse collapse in"
-			id="bs-example-navbar-collapse-1" aria-expanded="true"></div>
-		<!-- /.navbar-collapse -->
-	</div>
-	<!-- /.container -->
 	<body>
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header"></div>
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a data-toggle="dropdown"
+						class="dropdown-toggle" href="http://localhost:8080/Sangucheto/">Armar el Sanguchetto</a></li>
+				</ul>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="navbar-collapse collapse in"
+					id="bs-example-navbar-collapse-1" aria-expanded="true"></div>
+				<!-- /.navbar-collapse -->
+			</div>
+		<!-- /.container -->
+		</nav>
+		<br>
+		<br>
 		<div class="col-md-12" style="background-color: #8C9EFF;">
 			<div class="container">
 				<h1>Confirmación del Sanguchetto</h1>
 			</div>
 			<div class="col-md-12" style="background-color: #E3F2FD;">
-				<div class="container">
+				<div class="container" align="center">
 
 					<h3>¡Felicidades! Confirme sí los datos ingresados son los
 						correctos para realizar la compra.</h3>
@@ -114,21 +119,32 @@
 					</div>
 				</div>
 			</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-2 col-md-2">
-						<form:form action="compra">
-							<button type="submit" class="btn btn-primary">Confirmar</button>
-						</form:form>
-					</div>	
-						<form:form action="agregarMas">
-							<button type="submit" class="btn btn-primary">Modificar</button>
-						</form:form>
-				</div>
+			
+			<div class="container" align="center">
+				
+<!-- 				<div class="row"> -->
+<!-- 					<div class="col-md-3"></div> -->
+<!-- 					<div class="col-xs-2 col-md-2"> -->
+				<table>
+					<tbody>
+						<tr>
+							<td align="right">
+								<form:form action="compra">
+									<button type="submit" class="btn btn-primary">Confirmar</button>
+								</form:form>
+							</td>
+							<td class="col-md-4"></td>	
+		<!-- 					</div>	 -->
+							<td align="left">
+								<form:form action="agregarMas">
+									<button type="submit" class="btn btn-primary">Modificar</button>
+								</form:form>
+							</td>	
+						</tr>	
+					</tbody>
+				</table>		
+<!-- 				</div> -->	
 			</div>
-		</div>
-						<div class="link-volador-izquierda">
-				<a href="./"><button class="btn btn-link">Volver</button></a>
-			</div>
+		</div>				
 	</body>
 </html>

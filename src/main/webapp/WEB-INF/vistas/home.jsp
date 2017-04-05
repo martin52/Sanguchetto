@@ -39,13 +39,14 @@
 			<h1>Armado de Sanguchetto</h1>
 		</div>
 		<div class="col-md-12" style="background-color: #E3F2FD;">
-			<div class="container">
+			<div class="container" align="center">
+				
 				<h3>¡Bienvenido! Ingrese aquí los ingredientes y condimientos
 					de su Sanguchetto.</h3>
 
 				<table>
 					<tr>
-
+						
 						<td class="col-md-5">
 							<div class="panel panel-danger">
 
@@ -55,7 +56,7 @@
 										<thead>
 											<tr>
 												<th class="col-md-2">Nombre</th>
-												<th class="col-md-4">Precio Unitario</th>
+												<th class="col-md-3">Precio Unitario</th>
 												<th class="col-md-1"></th>
 
 											</tr>
@@ -68,12 +69,12 @@
 												<c:if
 													test="${IngredientesEnStock.get(ingredientesStock) gt 0}">
 													<c:if test="${ingredientesStock.tipo eq 'INGREDIENTE'}">
-														<form:form action="agregar" width="30" height="20"
+														<form:form action="agregar" 
 															modelAttribute="ingrediente" role="form">
 															<tr>
 																<td class="col-md-3">${ingredientesStock.nombre}</td>
 																<td class="col-md-2">${ingredientesStock.precio}</td>
-																<td class="col-md-1"></td>
+<!-- 																<td class="col-md-1"></td> -->
 																<td class="col-md-1"><form:input class="button"
 																		id="nombre" path="nombre" type="hidden"
 																		value="${ingredientesStock.nombre}" /> <form:input
@@ -105,7 +106,7 @@
 										<thead>
 											<tr>
 												<th class="col-md-2">Nombre</th>
-												<th class="col-md-4">Precio Unitario</th>
+												<th class="col-md-3">Precio Unitario</th>
 												<th class="col-md-1"></th>
 
 											</tr>
@@ -118,14 +119,14 @@
 												<c:if
 													test="${IngredientesEnStock.get(ingredientesStock) gt 0}">
 													<c:if test="${ingredientesStock.tipo eq 'CONDIMENTO'}">
-														<form:form action="agregar" width="30" height="20"
+														<form:form action="agregar" 
 															modelAttribute="ingrediente" role="form">
 															<tr>
 
 																<td class="col-md-3">${ingredientesStock.nombre}</td>
 
 																<td class="col-md-2">${ingredientesStock.precio}</td>
-																<td class="col-md-1"></td>
+<!-- 																<td class="col-md-1"></td> -->
 																<td class="col-md-1"><form:input class="button"
 																		id="nombre" path="nombre" type="hidden"
 																		value="${ingredientesStock.nombre}" /> <form:input
@@ -148,11 +149,11 @@
 							</td>
 						
 					</tr>
-				</table>
+<!-- 				</table> -->
 
 				<br>
 				<c:if test="${cantidadDeIngredientes ne 0}">
-					<table>
+<!-- 					<table> -->
 						<tr>
 							<td class="col-md-5">
 								<div class="panel panel-primary">
@@ -216,9 +217,18 @@
 															<td class="col-md-2">${ingrediente.precio}</td>
 															<td class="col-md-1">${IngredientesSangucheto.get(ingrediente)}</td>
 															<td class="col-md-1">
-																<button type="Submit" class="btn btn-danger btn-xs">
-																	<span class="glyphicon glyphicon-minus"></span>
-																</button>
+																<form:form action="sacarDeSanguchetto"
+																	modelAttribute="ingredienteASacar">
+																	<form:input id="nombre" path="nombre" type="hidden"
+																		value="${ingrediente.nombre}" />
+																	<form:input id="apellido" path="precio" type="hidden"
+																		value="${ingrediente.precio}" />
+																	<form:input id="tipo" path="tipo" type="hidden"
+																		value="${ingrediente.tipo}" />
+																	<button type="Submit" class="btn btn-danger btn-xs">
+																		<span class="glyphicon glyphicon-minus"></span>
+																	</button>
+																</form:form>
 															</td>
 														</tr>
 													</c:if>
@@ -247,19 +257,32 @@
 
 
 		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-2 col-md-2">
-					<form:form action="confirmarSanguche">
-						<button type="Submit" class="btn btn-primary">Confirmar</button>
-					</form:form>
-				</div>
-				<div>
-					<form:form action="cancelarSanguche">
-						<button type="Submit" class="btn btn-danger">Cancelar</button>
-					</form:form>
-				</div>
-			</div>
+		<br></br>
+		<div class="container" align="center">
+<!-- 			<div class="row"> -->
+			<table>
+<!-- 				<div class="col-md-5"></div> -->
+<!-- 				<div class="col-md-8"> -->
+				<tbody>
+					<tr>
+						<td align="right">
+							<form:form action="confirmarSanguche">
+								<button type="Submit" class="btn btn-primary">Confirmar</button>
+							</form:form>
+						</td>
+						<td class="col-md-4"></td>
+	<!-- 				</div> -->
+	<!-- 				<div class="col-md-1" align="left"> -->
+						<td align="left">
+							<form:form action="cancelarSanguche">
+								<button type="Submit" class="btn btn-danger">Cancelar</button>
+							</form:form>
+						</td>
+	<!-- 				</div> -->
+					</tr>
+				</tbody>
+			</table>
+<!-- 			</div> -->
 		</div>
 
 	</div>

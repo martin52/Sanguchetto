@@ -132,6 +132,8 @@ public class ControladorHome {
 	@RequestMapping(path="/sacarDeSanguchetto", method = RequestMethod.POST)
 	public String sacarDeSanguchetto(@ModelAttribute("ingredienteASacar")Ingrediente ingredienteASacar){
 		Sanguchetto.getInstance().sacarIngrediente(ingredienteASacar);
+		if(!Stock.getInstance().existeIngrediente(ingredienteASacar))
+			Stock.getInstance().agregarIngrediente(ingredienteASacar);
 		Stock.getInstance().agregarStock(ingredienteASacar, 1);
 		return "redirect:/";
 	}
