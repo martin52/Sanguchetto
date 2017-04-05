@@ -1,8 +1,8 @@
 package tallerweb.sangucheto.modelo;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Maneja un stock de ingredientes, el mismo puede ser asociado a una cantidad.<br>
@@ -13,7 +13,7 @@ import java.util.Set;
 public class Stock {
 	
 	private static Stock instance = new Stock();
-	private Map<Ingrediente, Integer> stock = new HashMap<Ingrediente, Integer>();
+	private Map<Ingrediente, Integer> stock = new TreeMap<Ingrediente, Integer>();
 	
 	private Stock(){
 	}
@@ -33,7 +33,7 @@ public class Stock {
 	}
 	
 	/**
-	 * Devuelve un mapa con los ingredientes y su stock correspondiente, tengan o no stock, es decir, los ingredientes con cantidad 0 son incluidos.<br>
+	 * Devuelve un SortedSortedMapa con los ingredientes y su stock correspondiente, tengan o no stock, es decir, los ingredientes con cantidad 0 son incluidos.<br>
 	 * @param producto
 	 * @param cantidad
 	 * @return 
@@ -41,7 +41,7 @@ public class Stock {
 	public Map<Ingrediente, Integer> obtenerStock(){
 		return stock;
 	}
-	
+		
 	/**
 	 * Permite agregar el ingrediente indicado al stock, con cantidad 0.<br>
 	 * @param ingrediente

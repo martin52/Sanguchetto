@@ -2,7 +2,8 @@ package tallerweb.sangucheto.modelo;
 
 import com.sun.istack.internal.NotNull;
 
-public class Ingrediente {
+@SuppressWarnings("rawtypes")
+public class Ingrediente implements Comparable{
     private String nombre;
     
     @NotNull
@@ -56,5 +57,12 @@ public class Ingrediente {
 		} else if (!nombre.equals(other.nombre))
 			return false;
 		return true;
+	}
+	@Override
+	public int compareTo(Object arg0) {
+		// TODO Auto-generated method stub
+		Ingrediente a= new Ingrediente();
+		a = (Ingrediente) arg0;
+		return nombre.compareTo(a.getNombre());
 	}
 }
