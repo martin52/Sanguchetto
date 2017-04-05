@@ -240,7 +240,9 @@
 							</c:if>
 						</tr>
 					</table>
-
+					<div class="container" align="center">
+						<h4>Con la compra superior a $200 <strong>¡Tenés un 20% de descuento!</strong></h4>
+					</div>
 					<c:if test="${descuento eq true}">
 						<span class="label label-default"> <label>Precio
 								sin descuento:$ ${precioSangucheSinDescuento}</label></span>
@@ -249,8 +251,8 @@
 								${porcentajeDeDescuento}%</label></span>
 						<br>
 					</c:if>
-					<span class="label label-default"> <label>Precio
-							Final:$ ${precioSangucheFinal}</label></span>
+					<h2><span class="label label-default"> <label>Precio
+							Final:$ ${precioSangucheFinal}</label></span></h2>
 					<br>
 					<br>
 			</div>

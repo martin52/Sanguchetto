@@ -53,6 +53,7 @@
 											<th class="col-md-1">Cantidad</th>
 										</tr>
 									</thead>
+									
 									<tbody>
 										<c:forEach items="${sanguche.keySet()}"
 											var="ingrediente">
@@ -82,7 +83,6 @@
 											<th class="col-md-2">Nombre</th>
 											<th class="col-md-4">Precio Unitario</th>
 											<th class="col-md-1">Cantidad</th>
-
 										</tr>
 									</thead>
 									<tbody>
@@ -114,8 +114,8 @@
 								${porcentajeDeDescuento}%</label></span>
 						<br>
 					</c:if>
-						<span class="label label-default"> <label>Precio Final:
-						${precio}</label></span> <br> <br>
+						<h2><span class="label label-default"> <label>Precio Final:
+						${precio}</label></span></h2> <br> <br>
 					</div>
 				</div>
 			</div>
