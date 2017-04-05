@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 
-<title>Home</title>
+<title>Arma tu Sanguchetto</title>
 </head>
 
 <body>

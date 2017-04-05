@@ -8,7 +8,7 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<title>Confirmacion</title>
+<title>Confirmación de compra</title>
 
 	<body>
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -119,7 +119,6 @@
 					</div>
 				</div>
 			</div>
-			
 			<div class="container" align="center">
 				
 <!-- 				<div class="row"> -->
