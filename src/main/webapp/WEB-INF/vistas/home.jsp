@@ -9,6 +9,9 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 
 <title>Arma tu Sanguchetto</title>
 </head>
@@ -43,11 +46,12 @@
 				
 				<h3>¡Bienvenido! Ingrese aquí los ingredientes y condimientos
 					de su Sanguchetto.</h3>
-
-				<table>
+			<div class="w3-responsive w3-card-4">
+					
+				<table class="w3-table w3-bordered">
 					<tr>
 						
-						<td class="col-md-5">
+						<td class="col-md-5" valign="top">
 							<div class="panel panel-danger">
 
 								<div class="panel-heading">Ingredientes Disponibles</div>
@@ -56,7 +60,7 @@
 										<thead>
 											<tr>
 												<th class="col-md-2">Nombre</th>
-												<th class="col-md-3">Precio Unitario</th>
+												<th class="col-md-4">Precio Unitario</th>
 												<th class="col-md-1"></th>
 
 											</tr>
@@ -73,7 +77,7 @@
 															modelAttribute="ingrediente" role="form">
 															<tr>
 																<td class="col-md-3">${ingredientesStock.nombre}</td>
-																<td class="col-md-2">${ingredientesStock.precio}</td>
+																<td class="col-md-2" >${ingredientesStock.precio}</td>
 <!-- 																<td class="col-md-1"></td> -->
 																<td class="col-md-1"><form:input class="button"
 																		id="nombre" path="nombre" type="hidden"
@@ -98,7 +102,7 @@
 						</td>
 
 					
-							<td class="col-md-5">
+							<td class="col-md-5" valign="top">
 								<div class="panel panel-danger">
 									<div class="panel-heading">Condimentos Disponibles</div>
 									<table class="table">
@@ -106,7 +110,7 @@
 										<thead>
 											<tr>
 												<th class="col-md-2">Nombre</th>
-												<th class="col-md-3">Precio Unitario</th>
+												<th class="col-md-4">Precio Unitario</th>
 												<th class="col-md-1"></th>
 
 											</tr>
@@ -155,7 +159,7 @@
 				<c:if test="${cantidadDeIngredientes ne 0}">
 <!-- 					<table> -->
 						<tr>
-							<td class="col-md-5">
+							<td class="col-md-5" valign="top">
 								<div class="panel panel-primary">
 									<div class="panel-heading">Ingredientes en su Sanguchetto</div>
 									<table class="table">
@@ -196,7 +200,7 @@
 							</td>
 							</c:if>
 							<c:if test="${cantidadDeCondimentos ne 0}">
-								<td class="col-md-5">
+								<td class="col-md-5" valign="top">
 									<div class="panel panel-primary">
 										<div class="panel-heading">Condimentos en su Sanguchetto</div>
 										<table class="table">
@@ -240,6 +244,7 @@
 							</c:if>
 						</tr>
 					</table>
+				</div>	
 					<div class="container" align="center">
 						<h4>Con la compra superior a $200 <strong>¡Tenés un 20% de descuento!</strong></h4>
 					</div>

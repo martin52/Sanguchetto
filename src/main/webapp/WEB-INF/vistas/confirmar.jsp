@@ -8,6 +8,9 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 <title>Confirmación de compra</title>
 
 	<body>
@@ -40,7 +43,8 @@
 					<div>
 						<br>
 						<c:if test="${cantidadDeIngredientes ne 0}">
-			<table>
+		<div class="w3-responsive w3-card-4">				
+			<table class="w3-table w3-bordered">
 					<tr>
 						<td class="col-md-5">
 							<div class="panel panel-primary">
@@ -106,6 +110,7 @@
 						</c:if>
 					</tr>
 				</table>
+			</div>	
 					<c:if test="${descuento eq true}">
 						<span class="label label-default"> <label>Precio sin
 								descuento:$ ${precioSangucheSinDescuento}</label></span>
